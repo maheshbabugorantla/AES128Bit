@@ -1,0 +1,24 @@
+// $Id: $
+// File name:   SBox.sv
+// Created:     2/8/2017
+// Author:      Mahesh Babu Gorantla
+// Lab Section: 337-02
+// Version:     1.0  Initial Design Entry
+// Description: "This is used to implement the Byte Substitution Layer"
+
+module SBox
+(
+	input wire [127:0] inputData,
+	output wire [127:0] byteSubData
+);
+
+	genvar index;
+
+	generate
+		for(index = 0; index <= 120; index = index + 8)
+		begin
+			sbox_unit SBOXUNIT1 (.dataIn(inputData[index + 7 : index]), .byteSOut(byteSubData[index + 7 : index]));
+		end
+	endgenerate
+
+endmodule 
