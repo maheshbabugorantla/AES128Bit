@@ -1,0 +1,78 @@
+// $Id: $
+// File name:   tb_shiftRows.sv
+// Created:     2/8/2017
+// Author:      Mahesh Babu Gorantla
+// Lab Section: 337-02
+// Version:     1.0  Initial Design Entry
+// Description: "TestBench to test the shiftRows Layer"
+
+`timescale 1ns/10ps
+
+module tb_shiftRows();
+
+	// Local Parameters
+	integer test_case_num;
+
+	// DUT PortMap Signals
+	reg [127:0] tb_byteSData;
+	reg [127:0] tb_shiftRowData;
+	
+	// Test Bench Reference Signals
+	reg [127:0] tb_exp_shiftRowData;
+
+	shiftRows DUT (
+			.byteSData(tb_byteSData),
+			.shiftRowData(tb_shiftRowData)
+		      );
+
+	initial
+	begin
+		test_case_num = 1;
+
+		tb_byteSData = 128'hC225567890C225567890C22556789012;
+		#5 // 5ns Delay
+		tb_exp_shiftRowData = 128'h909090787878565656252525C2C2C212;
+
+		if(tb_shiftRowData == tb_exp_shiftRowData)
+		begin
+			$info("Test Case #%0d Passed",test_case_num);
+		end
+		else
+		begin
+			$error("Test Case #%0d Failed", test_case_num);
+		end
+
+		test_case_num += 1;
+
+		tb_byteSData = 128'hF7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7;
+		#5 // 5ns Delay
+		tb_exp_shiftRowData = 128'hF7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7;
+
+		if(tb_shiftRowData == tb_exp_shiftRowData)
+		begin
+			$info("Test Case #%0d Passed",test_case_num);
+		end
+		else
+		begin
+			$error("Test Case #%0d Failed", test_case_num);
+		end
+
+
+		test_case_num += 1;
+
+		tb_byteSData = 128'h7B5B54657374566563746F725D53475D;
+		#5 // 5ns Delay
+		tb_exp_shiftRowData = 128'h73744765635354655D5B56727B746F5D;
+
+		if(tb_shiftRowData == tb_exp_shiftRowData)
+		begin
+			$info("Test Case #%0d Passed",test_case_num);
+		end
+		else
+		begin
+			$error("Test Case #%0d Failed", test_case_num);
+		end
+
+	end
+
+endmodule 
