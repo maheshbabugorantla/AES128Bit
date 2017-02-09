@@ -25,7 +25,7 @@ module encryption_block (
 	reg [127:0] shiftRowData;	
 
 	SBox SBOX_I (.inputData(inputData), .byteSubData(byteSubData));
-	shiftRows SHIFT_ROWS (.byteSData(byteSubData), .shiftRowData(shiftRowData));
+	shiftRows SHIFT_ROWS (.
 
 	always_ff@(posedge clk, negedge nRst)
 	begin
