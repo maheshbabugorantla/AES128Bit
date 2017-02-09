@@ -54,7 +54,7 @@ module tb_SBox();
 
 		tb_inputData = 128'hFFEEDDCCBBAA99887766554433221100;
 		#5;
-		if(tb_byteSubData == 128'h1628C14BEAACEEC4F533FC1BC3938263)
+		if(tb_byteSubData == 128'h1628C14BEAACEEC4F533FC1BC3938261)
 		begin
 			$info("Test Case #%0d Passed",test_case_num);
 		end
