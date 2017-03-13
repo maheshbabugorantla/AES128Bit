@@ -1,0 +1,11 @@
+{ signal: [
+  ['Decryption',
+  {name: 'clock',			wave: 'P................'},
+  {name: 'rst',				wave: '01...............'},
+  {name: 'start',			wave: '010..............'},
+  {name: 'Encrypt_input',	wave: '2.34.............', data:['','valid', 'data']},
+  {name: 'count',			wave: '2.345234234254...',data:['','0','1','2','3','4','5','6','7','8','9','10']},
+  {name: 'roundKey',		wave: '2..452345234532..',data:['','rk10','rk9','rk8','rk7','rk6','rk5','rk4','rk3','rk2','rk1','rk0']},
+  {name: 'DecryptedOutput',	wave: '2.............4..',data:['','Plain Text']},
+  {name:'done', wave:'0.............1..'}
+]]}

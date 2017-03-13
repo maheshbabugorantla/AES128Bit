@@ -14,7 +14,7 @@ module s_box
 	
 	reg [127:0] subByteData;
 
-	integer index;
+	genvar index;
 	
 	// This is an S-Box that is implemented as a LUT (LookUp Table) => Might have to correct this
 	reg [7:0] substitution_box [3:0][3:0] =   { {8'h63, 8'h7C, 8'h77, 8'h7B, 8'hF2, 8'h6B, 8'h6F, 8'hC5, 8'h30, 8'h01, 8'h67, 8'h2B, 8'hFE, 8'hD7, 8'hAB, 8'h76},

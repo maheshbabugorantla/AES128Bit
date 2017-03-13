@@ -8,119 +8,104 @@
 # //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
-vlog shiftRows.sv
+vlog mixColumns.sv
 # QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-# Start time: 11:53:05 on Feb 08,2017
-# vlog -reportprogress 300 shiftRows.sv 
-# ** Error: (vlog-19) Failed to access library 'work' at "work".
-# No such file or directory. (errno = ENOENT)
-# ** Error: Library work not found.
-# ** Error: Verilog Compiler exiting
-# End time: 11:53:05 on Feb 08,2017, Elapsed time: 0:00:00
+# Start time: 18:38:18 on Mar 12,2017
+# vlog -reportprogress 300 mixColumns.sv 
+# -- Compiling module mixColumns
+# ** Error: mixColumns.sv(42): near "[": syntax error, unexpected '[', expecting IDENTIFIER or TYPE_IDENTIFIER
+# ** Error: mixColumns.sv(58): near "[": syntax error, unexpected '[', expecting IDENTIFIER or TYPE_IDENTIFIER
+# End time: 18:38:18 on Mar 12,2017, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.
+vlog mixColumns.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 18:44:04 on Mar 12,2017
+# vlog -reportprogress 300 mixColumns.sv 
+# -- Compiling module mixColumns
+# ** Error: mixColumns.sv(42): near "[": syntax error, unexpected '[', expecting IDENTIFIER or TYPE_IDENTIFIER
+# ** Error: mixColumns.sv(58): near "[": syntax error, unexpected '[', expecting IDENTIFIER or TYPE_IDENTIFIER
+# End time: 18:44:04 on Mar 12,2017, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.
+vlog mixColumns.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 19:01:31 on Mar 12,2017
+# vlog -reportprogress 300 mixColumns.sv 
+# -- Compiling module mixColumns
+# ** Error: mixColumns.sv(42): near "[": syntax error, unexpected '[', expecting IDENTIFIER or TYPE_IDENTIFIER
+# ** Error: mixColumns.sv(58): near "[": syntax error, unexpected '[', expecting IDENTIFIER or TYPE_IDENTIFIER
+# End time: 19:01:31 on Mar 12,2017, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.
+vlog mixColumns.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 19:04:18 on Mar 12,2017
+# vlog -reportprogress 300 mixColumns.sv 
+# -- Compiling module mixColumns
+# ** Error: mixColumns.sv(34): near ":": syntax error, unexpected ':'
+# ** Error: mixColumns.sv(49): (vlog-2730) Undefined variable: 'r'.
+# ** Error: mixColumns.sv(60): near "[": syntax error, unexpected '[', expecting IDENTIFIER or TYPE_IDENTIFIER
+# End time: 19:04:18 on Mar 12,2017, Elapsed time: 0:00:00
 # Errors: 3, Warnings: 0
 # /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.
-vlib work
-vlog shiftRows.sv
+vlog mixColumns.sv
 # QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-# Start time: 11:53:11 on Feb 08,2017
-# vlog -reportprogress 300 shiftRows.sv 
-# -- Compiling module shiftRows
-# 
-# Top level modules:
-# 	shiftRows
-# End time: 11:53:11 on Feb 08,2017, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog tb_shiftRows.sv
-# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-# Start time: 12:10:26 on Feb 08,2017
-# vlog -reportprogress 300 tb_shiftRows.sv 
-# -- Compiling module tb_shiftRows
-# 
-# Top level modules:
-# 	tb_shiftRows
-# End time: 12:10:26 on Feb 08,2017, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog tb_shiftRows.sv
-# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-# Start time: 12:29:55 on Feb 08,2017
-# vlog -reportprogress 300 tb_shiftRows.sv 
-# -- Compiling module tb_shiftRows
-# 
-# Top level modules:
-# 	tb_shiftRows
-# End time: 12:29:55 on Feb 08,2017, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog tb_shiftRows.sv
-# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-# Start time: 12:37:21 on Feb 08,2017
-# vlog -reportprogress 300 tb_shiftRows.sv 
-# -- Compiling module tb_shiftRows
-# ** Error: tb_shiftRows.sv(47): near "'C": Illegal base specifier in numeric constant.
-# End time: 12:37:21 on Feb 08,2017, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
+# Start time: 19:04:35 on Mar 12,2017
+# vlog -reportprogress 300 mixColumns.sv 
+# -- Compiling module mixColumns
+# ** Error: mixColumns.sv(36): near "generate": syntax error, unexpected generate
+# ** Error: mixColumns.sv(37): near ")": syntax error, unexpected ')', expecting ';'
+# ** Error: mixColumns.sv(44): (vlog-2730) Undefined variable: 'r'.
+# ** Error: mixColumns.sv(49): Checker 'GField_02' not found.  Instantiation 'GF_02_I' must be of a visible checker.
+# ** Error: mixColumns.sv(50): Checker 'GField_02' not found.  Instantiation 'GF_02_II' must be of a visible checker.
+# ** Error: mixColumns.sv(51): Checker 'GField_02' not found.  Instantiation 'GF_02_III' must be of a visible checker.
+# ** Error: mixColumns.sv(52): Checker 'GField_02' not found.  Instantiation 'GF_02_IV' must be of a visible checker.
+# ** Error: mixColumns.sv(54): Checker 'GField_03' not found.  Instantiation 'GF_03_I' must be of a visible checker.
+# ** Error: mixColumns.sv(55): Checker 'GField_03' not found.  Instantiation 'GF_03_II' must be of a visible checker.
+# ** Error: mixColumns.sv(56): Checker 'GField_03' not found.  Instantiation 'GF_03_III' must be of a visible checker.
+# ** Error: mixColumns.sv(57): Checker 'GField_03' not found.  Instantiation 'GF_03_IV' must be of a visible checker.
+# ** Error: mixColumns.sv(66): near "end": syntax error, unexpected end
+# End time: 19:04:35 on Mar 12,2017, Elapsed time: 0:00:00
+# Errors: 12, Warnings: 0
 # /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.
-vlog tb_shiftRows.sv
+vlog mixColumns.sv
 # QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-# Start time: 12:37:30 on Feb 08,2017
-# vlog -reportprogress 300 tb_shiftRows.sv 
-# -- Compiling module tb_shiftRows
-# 
-# Top level modules:
-# 	tb_shiftRows
-# End time: 12:37:30 on Feb 08,2017, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog tb_shiftRows.sv
-# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-# Start time: 12:52:41 on Feb 08,2017
-# vlog -reportprogress 300 tb_shiftRows.sv 
-# -- Compiling module tb_shiftRows
-# ** Error: tb_shiftRows.sv(47): near "H7H7H7H7H7H7H7H7H7H7": syntax error, unexpected IDENTIFIER, expecting ';'
-# ** Error: tb_shiftRows.sv(49): Expecting numeric digits.
-# ** Error: tb_shiftRows.sv(49): near "H7H7H7H7H7H7H7H7H7H7": syntax error, unexpected IDENTIFIER, expecting ';'
-# End time: 12:52:41 on Feb 08,2017, Elapsed time: 0:00:00
-# Errors: 3, Warnings: 0
+# Start time: 19:06:13 on Mar 12,2017
+# vlog -reportprogress 300 mixColumns.sv 
+# -- Compiling module mixColumns
+# ** Error: mixColumns.sv(36): near "generate": syntax error, unexpected generate
+# ** Error: mixColumns.sv(37): near ")": syntax error, unexpected ')', expecting ';'
+# ** Error: mixColumns.sv(44): (vlog-2730) Undefined variable: 'r'.
+# ** Error: mixColumns.sv(49): Checker 'GField_02' not found.  Instantiation 'GF_02_I' must be of a visible checker.
+# ** Error: mixColumns.sv(50): Checker 'GField_02' not found.  Instantiation 'GF_02_II' must be of a visible checker.
+# ** Error: mixColumns.sv(51): Checker 'GField_02' not found.  Instantiation 'GF_02_III' must be of a visible checker.
+# ** Error: mixColumns.sv(52): Checker 'GField_02' not found.  Instantiation 'GF_02_IV' must be of a visible checker.
+# ** Error: mixColumns.sv(54): Checker 'GField_03' not found.  Instantiation 'GF_03_I' must be of a visible checker.
+# ** Error: mixColumns.sv(55): Checker 'GField_03' not found.  Instantiation 'GF_03_II' must be of a visible checker.
+# ** Error: mixColumns.sv(56): Checker 'GField_03' not found.  Instantiation 'GF_03_III' must be of a visible checker.
+# ** Error: mixColumns.sv(57): Checker 'GField_03' not found.  Instantiation 'GF_03_IV' must be of a visible checker.
+# ** Error: mixColumns.sv(65): near "endgenerate": syntax error, unexpected endgenerate
+# End time: 19:06:13 on Mar 12,2017, Elapsed time: 0:00:00
+# Errors: 12, Warnings: 0
 # /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.
-vlog tb_shiftRows.sv
+vlog mixColumns.sv
 # QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-# Start time: 12:52:54 on Feb 08,2017
-# vlog -reportprogress 300 tb_shiftRows.sv 
-# -- Compiling module tb_shiftRows
-# ** Error: tb_shiftRows.sv(47): Expecting numeric digits.
-# ** Error: tb_shiftRows.sv(47): near "H7H7H7H7H7H7H7H7H7H7": syntax error, unexpected IDENTIFIER, expecting ';'
-# ** Error: tb_shiftRows.sv(49): Expecting numeric digits.
-# ** Error: tb_shiftRows.sv(49): near "H7H7H7H7H7H7H7H7H7H7": syntax error, unexpected IDENTIFIER, expecting ';'
-# End time: 12:52:54 on Feb 08,2017, Elapsed time: 0:00:00
-# Errors: 4, Warnings: 0
+# Start time: 19:08:53 on Mar 12,2017
+# vlog -reportprogress 300 mixColumns.sv 
+# -- Compiling module mixColumns
+# ** Error: mixColumns.sv(30): near "[": syntax error, unexpected '[', expecting IDENTIFIER or TYPE_IDENTIFIER
+# ** Error: mixColumns.sv(58): near "[": syntax error, unexpected '[', expecting IDENTIFIER or TYPE_IDENTIFIER
+# End time: 19:08:54 on Mar 12,2017, Elapsed time: 0:00:01
+# Errors: 2, Warnings: 0
 # /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.
-vlog tb_shiftRows.sv
+vlog mixColumns.sv
 # QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-# Start time: 12:53:06 on Feb 08,2017
-# vlog -reportprogress 300 tb_shiftRows.sv 
-# -- Compiling module tb_shiftRows
-# ** Error: tb_shiftRows.sv(47): Expecting numeric digits.
-# ** Error: tb_shiftRows.sv(47): near "H7H7H7H7H7H7H7H7H7H7": syntax error, unexpected IDENTIFIER, expecting ';'
-# ** Error: tb_shiftRows.sv(49): Expecting numeric digits.
-# ** Error: tb_shiftRows.sv(49): near "H7H7H7H7H7H7H7H7H7H7": syntax error, unexpected IDENTIFIER, expecting ';'
-# End time: 12:53:06 on Feb 08,2017, Elapsed time: 0:00:00
-# Errors: 4, Warnings: 0
+# Start time: 19:27:46 on Mar 12,2017
+# vlog -reportprogress 300 mixColumns.sv 
+# -- Compiling module mixColumns
+# ** Error: mixColumns.sv(30): near "[": syntax error, unexpected '[', expecting IDENTIFIER or TYPE_IDENTIFIER
+# ** Error: mixColumns.sv(58): near "[": syntax error, unexpected '[', expecting IDENTIFIER or TYPE_IDENTIFIER
+# End time: 19:27:46 on Mar 12,2017, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
 # /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.
-vlog tb_shiftRows.sv
-# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-# Start time: 12:53:57 on Feb 08,2017
-# vlog -reportprogress 300 tb_shiftRows.sv 
-# -- Compiling module tb_shiftRows
-# 
-# Top level modules:
-# 	tb_shiftRows
-# End time: 12:53:57 on Feb 08,2017, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog tb_shiftRows.sv
-# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-# Start time: 12:54:30 on Feb 08,2017
-# vlog -reportprogress 300 tb_shiftRows.sv 
-# -- Compiling module tb_shiftRows
-# 
-# Top level modules:
-# 	tb_shiftRows
-# End time: 12:54:30 on Feb 08,2017, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0

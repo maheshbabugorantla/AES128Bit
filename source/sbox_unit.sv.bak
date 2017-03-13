@@ -15,7 +15,6 @@ module sbox_unit
 	always_comb
 	begin
 		case(dataIn)
-			
 			8'h00: begin byteSOut = 8'h63; end
 			8'h01: begin byteSOut = 8'h7C; end
 			8'h02: begin byteSOut = 8'h77; end

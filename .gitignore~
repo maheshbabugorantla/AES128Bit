@@ -1,0 +1,15 @@
+*.log
+*.svf
+*.tcl
+*.ini
+*.mcomp
+*.mtran
+*.scomp
+./source/~.bak
+./mapped/*
+./source_work/*
+./mapped_work/*
+./reports/*
+./analyzed/*
+./schematic/*
+./
