@@ -28,7 +28,7 @@ module tb_mix_columns();
 		
 		#2
 
-		if(dataOutput == 128'h)
+		if(dataOutput == 128'h4C9F42BCA3703AA640D4E4A5473794ED)
 		begin
 			$info("Test Case #%0d Passed", test_case_num);	
 		end
@@ -36,6 +36,6 @@ module tb_mix_columns();
 		begin
 			$error("Test Case #%0d Failed", test_case_num);	
 		end
-	end	
+	end
 
 endmodule 

@@ -24,7 +24,7 @@ module tb_mix_columns();
 	begin
 		test_case_num = 1;
 
-		dataInput = 128'h97ECC3954D904AD8F24CE78C876E46A6;
+		dataInput = 128'h97ECC3954D904AD8F24CE78CA6466E87;
 		
 		#2
 
@@ -36,6 +36,6 @@ module tb_mix_columns();
 		begin
 			$error("Test Case #%0d Failed", test_case_num);	
 		end
-	end	
+	end
 
 endmodule 

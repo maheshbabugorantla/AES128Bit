@@ -272,7 +272,6 @@ module sbox_unit
 			8'hFE: begin byteSOut = 8'hBB; end
 			8'hFF: begin byteSOut = 8'h16; end
 		endcase
-		//$display("Output is %h", byteSOut); 
 	end
 
 endmodule 

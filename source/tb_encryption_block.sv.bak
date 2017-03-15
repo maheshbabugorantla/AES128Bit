@@ -18,7 +18,8 @@ module tb_encryption_block();
 	reg [127:0] tb_outputData;
 
 	// Test Bench reference Signals
-		
+	
+	
 	encryption_block ENCRYPT_BLK(
 					.inputData(tb_inputData),
 					.outputData(tb_outputData)
