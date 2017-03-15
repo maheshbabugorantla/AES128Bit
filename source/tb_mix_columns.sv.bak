@@ -14,21 +14,62 @@ module tb_mix_columns();
 	integer test_case_num;	
 	
 	// DUT Signals
-	reg [127:0] dataInput;
-	reg [127:0] dataOutput;	
+	reg [127:0] tb_dataInput;
+	reg [127:0] tb_dataOutput;	
+	reg tb_enable;
 
 	// DUT PortMap for mix_columns module
-	mix_columns MIX_COLUMNS( .dataIn(dataInput), .dataOut(dataOutput) );
+	mix_columns MIX_COLUMNS(
+					.dataIn(tb_dataInput),
+					.enable(tb_enable),
+					.dataOut(tb_dataOutput)
+			       );
 
 	initial
 	begin
 		test_case_num = 1;
 
-		dataInput = 128'h97ECC3954D904AD8F24CE78C876E46A6;
+		tb_enable = 1;
+
+		tb_dataInput = 128'h97ECC3954D904AD8F24CE78CA6466E87;
 		
 		#2
 
-		if(dataOutput == 128'h4C9F42BCA3703AA640D4E4A5473794ED)
+		if(tb_dataOutput == 128'h4C9F42BCA3703AA640D4E4A5741AECC)
+		begin
+			$info("Test Case #%0d Passed", test_case_num);	
+		end
+		else 
+		begin
+			$error("Test Case #%0d Failed", test_case_num);	
+		end
+
+		test_case_num += 1;
+
+		tb_enable = 1;
+
+		tb_dataInput = 128'hCA6E80D7A0543F0EC358558977895ED9;
+		
+		#2
+
+		if(tb_dataOutput == 128'h6A5ADD1E9647988CA905B15AE94532E7)
+		begin
+			$info("Test Case #%0d Passed", test_case_num);	
+		end
+		else 
+		begin
+			$error("Test Case #%0d Failed", test_case_num);	
+		end
+
+		#1
+
+		test_case_num += 1;
+
+		tb_enable = 0;
+		
+		#2
+	
+		if(tb_dataOutput == tb_dataInput)
 		begin
 			$info("Test Case #%0d Passed", test_case_num);	
 		end

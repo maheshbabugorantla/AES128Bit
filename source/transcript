@@ -135,3 +135,73 @@ vlog tb_KeySchedule.sv
 # 	tb_KeySchedule
 # End time: 01:45:20 on Mar 15,2017, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
+vlog mix_columns.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 04:21:42 on Mar 15,2017
+# vlog -reportprogress 300 mix_columns.sv 
+# -- Compiling module mix_columns
+# ** Error: mix_columns.sv(171): (vlog-2730) Undefined variable: 'tempdataOut'.
+# End time: 04:21:42 on Mar 15,2017, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.
+vlog mix_columns.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 04:21:56 on Mar 15,2017
+# vlog -reportprogress 300 mix_columns.sv 
+# -- Compiling module mix_columns
+# 
+# Top level modules:
+# 	mix_columns
+# End time: 04:21:56 on Mar 15,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog tb_mix_columns.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 04:38:19 on Mar 15,2017
+# vlog -reportprogress 300 tb_mix_columns.sv 
+# -- Compiling module tb_mix_columns
+# 
+# Top level modules:
+# 	tb_mix_columns
+# End time: 04:38:19 on Mar 15,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog mix_columns.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 04:48:56 on Mar 15,2017
+# vlog -reportprogress 300 mix_columns.sv 
+# -- Compiling module mix_columns
+# 
+# Top level modules:
+# 	mix_columns
+# End time: 04:48:56 on Mar 15,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog mix_columns.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 05:36:40 on Mar 15,2017
+# vlog -reportprogress 300 mix_columns.sv 
+# -- Compiling module mix_columns
+# 
+# Top level modules:
+# 	mix_columns
+# End time: 05:36:40 on Mar 15,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog tb_mix_columns.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 05:36:41 on Mar 15,2017
+# vlog -reportprogress 300 tb_mix_columns.sv 
+# -- Compiling module tb_mix_columns
+# ** Error: tb_mix_columns.sv(32): (vlog-2110) Illegal reference to net "tb_enable".
+# ** Error: tb_mix_columns.sv(49): (vlog-2110) Illegal reference to net "tb_enable".
+# ** Error: tb_mix_columns.sv(68): (vlog-2110) Illegal reference to net "tb_enable".
+# End time: 05:36:41 on Mar 15,2017, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 0
+# /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.
+vlog tb_mix_columns.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 05:36:53 on Mar 15,2017
+# vlog -reportprogress 300 tb_mix_columns.sv 
+# -- Compiling module tb_mix_columns
+# 
+# Top level modules:
+# 	tb_mix_columns
+# End time: 05:36:53 on Mar 15,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

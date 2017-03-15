@@ -28,7 +28,8 @@ module encryption_block (
 			     );
 
 	mix_columns MIX_COLUMNS( 
-					.dataIn(shiftRowData), 
+					.dataIn(shiftRowData),
+					.enable(1'b1),
 					.dataOut(outputData) 
 				);
 

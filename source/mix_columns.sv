@@ -9,6 +9,7 @@
 module mix_columns
 (
 	input wire [127:0] dataIn,
+	input wire enable,
 	output wire [127:0] dataOut
 );
 	
@@ -27,6 +28,9 @@ module mix_columns
 	// For Fourth Column	  
 	reg [7:0] in_30, in_31, in_32, in_33;
 	reg [7:0] out_30, out_31, out_32, out_33;
+	
+	// Output
+	reg [127:0] tempDataOut;
 
 	// Getting the individual bytes
 	assign {in_00, in_01, in_02, in_03} = dataIn[31:0];
@@ -64,7 +68,7 @@ module mix_columns
 	assign out_02 = in_00 ^ in_01 ^ byte_out_202 ^ byte_out_302;
 	assign out_03 = byte_out_303 ^ in_01 ^ in_02 ^ byte_out_203;
 
-	assign dataOut[31:0] = {out_00, out_01, out_02, out_03};
+	assign tempDataOut[31:0] = {out_00, out_01, out_02, out_03};
 
 /***********************************************************************************/
 
@@ -96,7 +100,7 @@ module mix_columns
 	assign out_12 = in_10 ^ in_11 ^ byte_out_212 ^ byte_out_312;
 	assign out_13 = byte_out_313 ^ in_11 ^ in_12 ^ byte_out_213;
 
-	assign dataOut[63:32] = {out_10, out_11, out_12, out_13};
+	assign tempDataOut[63:32] = {out_10, out_11, out_12, out_13};
 
 /***********************************************************************************/
 
@@ -128,7 +132,7 @@ module mix_columns
 	assign out_22 = in_20 ^ in_21 ^ byte_out_222 ^ byte_out_322;
 	assign out_23 = byte_out_323 ^ in_21 ^ in_22 ^ byte_out_223;
 
-	assign dataOut[95:64] = {out_20, out_21, out_22, out_23};
+	assign tempDataOut[95:64] = {out_20, out_21, out_22, out_23};
 
 /***********************************************************************************/
 
@@ -160,8 +164,10 @@ module mix_columns
 	assign out_32 = in_30 ^ in_31 ^ byte_out_232 ^ byte_out_332;
 	assign out_33 = byte_out_333 ^ in_31 ^ in_32 ^ byte_out_233;
 
-	assign dataOut[127:96] = {out_30, out_31, out_32, out_33};
+	assign tempDataOut[127:96] = {out_30, out_31, out_32, out_33};
 
 /***********************************************************************************/
+
+	assign dataOut = enable ? tempDataOut : dataIn;
 
 endmodule 

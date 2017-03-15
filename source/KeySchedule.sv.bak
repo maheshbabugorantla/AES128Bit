@@ -8,6 +8,7 @@
 
 module KeySchedule
 (
+	input wire 
 	input wire [127:0] encryptKey,
 	output wire [1407:0] roundKeys
 );
@@ -82,7 +83,7 @@ module KeySchedule
 	// Round Key 10
 	roundKey ROUND_KEY_10( 
 				.inputKey(roundKey9),
-	                        .count(9),
+	                        .count(4'b1001),
 	                        .outputRoundKey(roundKey10)
  			     );
 

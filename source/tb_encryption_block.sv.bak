@@ -18,8 +18,7 @@ module tb_encryption_block();
 	reg [127:0] tb_outputData;
 
 	// Test Bench reference Signals
-	
-	
+		
 	encryption_block ENCRYPT_BLK(
 					.inputData(tb_inputData),
 					.outputData(tb_outputData)
@@ -132,6 +131,54 @@ module tb_encryption_block();
 		#5;
 
 		if(tb_outputData == 128'hFCFCFCFCFCFCFCFCFCFCFCFCFCFCFCFC)
+		begin
+			$info("Test Case #%0d Passed", test_case_number);
+		end
+		else
+		begin
+			$error("Test Case #%0d Failed", test_case_number);
+		end
+
+		// Test Case 8
+		test_case_number += 1;
+	
+		tb_inputData = 128'h4452D2CA485F5E5D8CC0BB674E47BA2C;
+
+		#5;
+
+		if(tb_outputData == 128'h0700197698A20E09D61AAC9213EF3380)
+		begin
+			$info("Test Case #%0d Passed", test_case_number);
+		end
+		else
+		begin
+			$error("Test Case #%0d Failed", test_case_number);
+		end
+
+		// Test Case 9
+		test_case_number += 1;
+	
+		tb_inputData = 128'h206641F7BB4F1DC64676508180322B9B;
+
+		#5;
+
+		if(tb_outputData == 128'h0A33CCBE94969FD311C78202EE92969E)
+		begin
+			$info("Test Case #%0d Passed", test_case_number);
+		end
+		else
+		begin
+			$error("Test Case #%0d Failed", test_case_number);
+		end
+
+		// Test Case 10
+		test_case_number += 1;
+	
+		tb_inputData = 128'h9010A5C4B867787E5E3A544CD2C4792B;
+
+		#5;
+
+		if(tb_outputData == 128'h159C05CAB38325A4F2BADE7C)
 		begin
 			$info("Test Case #%0d Passed", test_case_number);
 		end
