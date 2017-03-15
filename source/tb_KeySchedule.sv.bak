@@ -157,7 +157,7 @@ module tb_KeySchedule();
 
 		roundKey10 = tb_roundKeys[1407:1280];
 
-		if(roundKey10 == 128'hBCEF278A0CD20717E31D4D193E5BB30D)
+		if(roundKey9 == 128'hBCEF278A0CD20717E31D4D193E5BB30D)
 		begin
 			$info("Test Case #%0d Passed", test_case_number);
 		end

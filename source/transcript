@@ -8,33 +8,130 @@
 # //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
-vlog tb_g_func_key_expansion.sv
+vlog roundKey.sv
 # QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-# Start time: 21:12:55 on Mar 14,2017
-# vlog -reportprogress 300 tb_g_func_key_expansion.sv 
-# -- Compiling module tb_g_func_key_expansion
+# Start time: 22:47:08 on Mar 14,2017
+# vlog -reportprogress 300 roundKey.sv 
+# -- Compiling module roundKey
+# ** Error: roundKey.sv(25): near ")": syntax error, unexpected ')', expecting .* or '.'
+# End time: 22:47:08 on Mar 14,2017, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.
+vlog roundKey.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 22:47:18 on Mar 14,2017
+# vlog -reportprogress 300 roundKey.sv 
+# -- Compiling module roundKey
 # 
 # Top level modules:
-# 	tb_g_func_key_expansion
-# End time: 21:12:55 on Mar 14,2017, Elapsed time: 0:00:00
+# 	roundKey
+# End time: 22:47:18 on Mar 14,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vlog tb_g_func_key_expansion.sv
+vlog TB_roundKey.sv
 # QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-# Start time: 21:49:59 on Mar 14,2017
-# vlog -reportprogress 300 tb_g_func_key_expansion.sv 
-# -- Compiling module tb_g_func_key_expansion
+# Start time: 23:15:38 on Mar 14,2017
+# vlog -reportprogress 300 TB_roundKey.sv 
+# ** Error: (vlog-7) Failed to open design unit file "TB_roundKey.sv" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 23:15:38 on Mar 14,2017, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.
+vlog tb_roundKey.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 23:15:42 on Mar 14,2017
+# vlog -reportprogress 300 tb_roundKey.sv 
+# -- Compiling module tb_roundKey
+# ** Error: tb_roundKey.sv(51): (vlog-2730) Undefined variable: 'tb_outRoundKey'.
+# End time: 23:15:42 on Mar 14,2017, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.
+vlog tb_roundKey.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 23:16:03 on Mar 14,2017
+# vlog -reportprogress 300 tb_roundKey.sv 
+# -- Compiling module tb_roundKey
 # 
 # Top level modules:
-# 	tb_g_func_key_expansion
-# End time: 21:49:59 on Mar 14,2017, Elapsed time: 0:00:00
+# 	tb_roundKey
+# End time: 23:16:03 on Mar 14,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vlog g_func_key_expansion.sv
+vlog tb_roundKey.sv
 # QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-# Start time: 21:50:03 on Mar 14,2017
-# vlog -reportprogress 300 g_func_key_expansion.sv 
-# -- Compiling module g_func_key_expansion
+# Start time: 23:17:44 on Mar 14,2017
+# vlog -reportprogress 300 tb_roundKey.sv 
+# -- Compiling module tb_roundKey
 # 
 # Top level modules:
-# 	g_func_key_expansion
-# End time: 21:50:03 on Mar 14,2017, Elapsed time: 0:00:00
+# 	tb_roundKey
+# End time: 23:17:44 on Mar 14,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog tb_roundKey.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 23:34:48 on Mar 14,2017
+# vlog -reportprogress 300 tb_roundKey.sv 
+# -- Compiling module tb_roundKey
+# ** Error: tb_roundKey.sv(74): near "000": Illegal digit for specified base in numeric constant.
+# End time: 23:34:48 on Mar 14,2017, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.
+vlog tb_roundKey.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 23:35:48 on Mar 14,2017
+# vlog -reportprogress 300 tb_roundKey.sv 
+# -- Compiling module tb_roundKey
+# 
+# Top level modules:
+# 	tb_roundKey
+# End time: 23:35:48 on Mar 14,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog KeySchedule.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 01:19:28 on Mar 15,2017
+# vlog -reportprogress 300 KeySchedule.sv 
+# -- Compiling module KeySchedule
+# 
+# Top level modules:
+# 	KeySchedule
+# End time: 01:19:28 on Mar 15,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog tb_KeySchedule.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 01:41:56 on Mar 15,2017
+# vlog -reportprogress 300 tb_KeySchedule.sv 
+# -- Compiling module tb_KeySchedule
+# ** Error: tb_KeySchedule.sv(67): near "if": syntax error, unexpected if, expecting ';'
+# ** Error: tb_KeySchedule.sv(82): near "$info": syntax error, unexpected SYSTEM_IDENTIFIER
+# ** Error: tb_KeySchedule.sv(86): near "$error": syntax error, unexpected SYSTEM_IDENTIFIER
+# End time: 01:41:56 on Mar 15,2017, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 0
+# /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.
+vlog tb_KeySchedule.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 01:42:06 on Mar 15,2017
+# vlog -reportprogress 300 tb_KeySchedule.sv 
+# -- Compiling module tb_KeySchedule
+# 
+# Top level modules:
+# 	tb_KeySchedule
+# End time: 01:42:06 on Mar 15,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog tb_KeySchedule.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 01:42:11 on Mar 15,2017
+# vlog -reportprogress 300 tb_KeySchedule.sv 
+# -- Compiling module tb_KeySchedule
+# 
+# Top level modules:
+# 	tb_KeySchedule
+# End time: 01:42:11 on Mar 15,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog tb_KeySchedule.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 01:45:19 on Mar 15,2017
+# vlog -reportprogress 300 tb_KeySchedule.sv 
+# -- Compiling module tb_KeySchedule
+# 
+# Top level modules:
+# 	tb_KeySchedule
+# End time: 01:45:20 on Mar 15,2017, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
