@@ -8,9 +8,9 @@
 
 module KeySchedule
 (
-	input wire 
 	input wire [127:0] encryptKey,
 	output wire [1407:0] roundKeys
+	//output wire done
 );
 		
 	reg [127:0] roundKey0, roundKey1, roundKey2, roundKey3, roundKey4, roundKey5, roundKey6, roundKey7, roundKey8, roundKey9, roundKey10;  

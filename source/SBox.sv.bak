@@ -13,7 +13,7 @@ module SBox
 	output wire [127:0] byteSubData
 );
 
-	reg [127:0] tempByteSubData;
+	reg [127:0] tempByteSubData
 
 	genvar index;
 

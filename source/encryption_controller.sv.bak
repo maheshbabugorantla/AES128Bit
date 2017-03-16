@@ -254,7 +254,7 @@ module encryption_controller
 				temp_clear = 1'b0;
 				temp_count_enable = 1'b0;
 				temp_control_output = 1'b1;
-				temp_encryptedOut = dataIn;
+				temp_encryptedOut = dataIn;				
 			end
 
 			ENCRYPT_OUT:

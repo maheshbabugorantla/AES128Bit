@@ -10,15 +10,15 @@ cModel Technology
 Z0 d/home/ecegrid/a/mg45/Desktop/GitHub/AES128Bit/source
 vencryption_block
 Z1 DXx6 sv_std 3 std 0 22 <EOTafDcUY:cQeO^ICn]m3
-!s110 1489406963
+!s110 1489693164
 !i10b 1
-!s100 VjEm1oFjFTk83Nhb_nOH^2
-IFQXY5i=Yl3XH@cK`8gVei0
+!s100 b2gc;WY7Ng]1Ujea_VSd@3
+IXoGCUFQRAAmBU]j]BBbGo2
 Z2 V`JN@9S9cnhjKRR_L]QIcM3
 !s105 encryption_block_sv_unit
 S1
 R0
-w1489406953
+w1489693129
 8encryption_block.sv
 Fencryption_block.sv
 L0 8
@@ -26,11 +26,34 @@ Z3 OL;L;10.3b;59
 r1
 !s85 0
 31
-!s108 1489406963.535972
+!s108 1489693164.578693
 !s107 encryption_block.sv|
 !s90 -reportprogress|300|encryption_block.sv|
 !i113 0
 Z4 o-L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+vencryption_controller
+R1
+!s110 1489693168
+!i10b 1
+!s100 c5O3C]8k>a9QlS:kC<BW[3
+I_9T6hW39[6nTSQN1@z__B2
+R2
+!s105 encryption_controller_sv_unit
+S1
+R0
+w1489691832
+8encryption_controller.sv
+Fencryption_controller.sv
+L0 9
+R3
+r1
+!s85 0
+31
+!s108 1489693168.433223
+!s107 encryption_controller.sv|
+!s90 -reportprogress|300|encryption_controller.sv|
+!i113 0
+R4
 vg_func_key_expansion
 R1
 !s110 1489542603
@@ -337,6 +360,30 @@ r1
 !s90 -reportprogress|300|inverse_mix_columns.sv|
 !i113 0
 R4
+vKeyAddition
+R1
+!s110 1489591139
+!i10b 1
+!s100 H>Roc52_VlRcG?Z`YU[?^1
+I8_7789=8kO3Q`?SDHoJJk3
+R2
+!s105 KeyAddition_sv_unit
+S1
+R0
+w1489591042
+8KeyAddition.sv
+FKeyAddition.sv
+L0 9
+R3
+r1
+!s85 0
+31
+!s108 1489591139.946668
+!s107 KeyAddition.sv|
+!s90 -reportprogress|300|KeyAddition.sv|
+!i113 0
+R4
+n@key@addition
 vKeySchedule
 R1
 !s110 1489555168
@@ -432,6 +479,30 @@ r1
 !i113 0
 R4
 nround@key
+vSBox
+R1
+!s110 1489596027
+!i10b 1
+!s100 n=gI?caK4K67bWn1`6PQb2
+IaV4L4NF_Q4Nbho;_:14>_2
+R2
+!s105 SBox_sv_unit
+S1
+R0
+w1489596001
+8SBox.sv
+FSBox.sv
+L0 9
+R3
+r1
+!s85 0
+31
+!s108 1489596027.605931
+!s107 SBox.sv|
+!s90 -reportprogress|300|SBox.sv|
+!i113 0
+R4
+n@s@box
 vsbox_unit
 R1
 !s110 1489415834
@@ -457,15 +528,15 @@ r1
 R4
 vshiftRows
 R1
-!s110 1489417739
+!s110 1489635810
 !i10b 1
-!s100 A8KE7VR>M^omX5ZSQ6T5g0
-I4V6RN57Xa[@`[QA<hNJB`1
+!s100 Xm:ocS6FegGeViXT7l[6=2
+I5:P]?[K__@EegmHPlTB0[1
 R2
 !s105 shiftRows_sv_unit
 S1
 R0
-w1489417622
+w1489635799
 8shiftRows.sv
 FshiftRows.sv
 L0 9
@@ -473,7 +544,7 @@ R3
 r1
 !s85 0
 31
-!s108 1489417739.035025
+!s108 1489635810.561129
 !s107 shiftRows.sv|
 !s90 -reportprogress|300|shiftRows.sv|
 !i113 0
@@ -481,15 +552,15 @@ R4
 nshift@rows
 vtb_encryption_block
 R1
-!s110 1489408991
+!s110 1489592970
 !i10b 1
-!s100 i?n2@]1=9jAbEMeL^oHKP2
-IA8Y^0XBW?`98mHPz7<N2E0
+!s100 MPOUfTVeg5jKBbfbLi;4f0
+I6?ghCJK?Ola_PzY=]_bY=3
 R2
 !s105 tb_encryption_block_sv_unit
 S1
 R0
-w1489408985
+w1489592963
 8tb_encryption_block.sv
 Ftb_encryption_block.sv
 Z5 L0 11
@@ -497,7 +568,7 @@ R3
 r1
 !s85 0
 31
-!s108 1489408991.529488
+!s108 1489592970.199516
 !s107 tb_encryption_block.sv|
 !s90 -reportprogress|300|tb_encryption_block.sv|
 !i113 0

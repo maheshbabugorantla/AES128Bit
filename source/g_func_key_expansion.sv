@@ -17,11 +17,12 @@ module g_func_key_expansion
 	
 	// These are the RConstants used from the Rjindael's Wiki 
 	// Because we need only constants from 1 - 10 as there are only 10 round in AES 128-bit encryption
-	reg [7:0] R_Const [0:9] = {8'h01, 8'h02, 8'h04, 8'h08, 8'h10, 8'h20, 8'h40, 8'h80, 8'h1b, 8'h36};
+	reg [7:0] R_Const [0:9]; // = {8'h01, 8'h02, 8'h04, 8'h08, 8'h10, 8'h20, 8'h40, 8'h80, 8'h1b, 8'h36};
 
 	reg [7:0] byte_0, byte_1, byte_2, byte_3;	
-	reg [31:0] round_constant;	
+	reg [31:0] round_constant;
 
+	assign R_Const = {8'h01, 8'h02, 8'h04, 8'h08, 8'h10, 8'h20, 8'h40, 8'h80, 8'h1b, 8'h36};
 
 	// 1st Step
 	// Perform a byte substitution for each byte of input the word

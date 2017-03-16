@@ -40,7 +40,7 @@ module mix_columns
 
 /***********************************************************************************/
 	
-	// First Mixed Column	
+	// First Mixed Column
 	reg [7:0] byte_out_200;
 	reg [7:0] byte_out_300;
 	reg [7:0] byte_out_201;

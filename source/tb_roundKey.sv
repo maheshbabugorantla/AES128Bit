@@ -12,7 +12,7 @@ module tb_roundKey();
 
 	// Test Bench Parameters
 	integer	test_case_number;
-	parameter DELAY = 5ns;
+	parameter DELAY = 10ns;
 
 	// DUT Parameters
 	reg [127:0] tb_inputKey;
@@ -21,8 +21,9 @@ module tb_roundKey();
 
 	// DUT Portmap
 	roundKey ROUND_KEY (
-				.encryptKey(tb_encryptKey),
-				.RoundKey(tb_outputRoundKey)
+				.inputKey(tb_inputKey),
+				.count(tb_count),
+				.outputRoundKey(tb_outputRoundKey)
 			   );
 
 

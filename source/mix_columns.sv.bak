@@ -168,6 +168,6 @@ module mix_columns
 
 /***********************************************************************************/
 
-	//assign dataOut = enable ? tempDataOut : dataIn;
+	assign dataOut = enable ? tempDataOut : dataIn;
 
 endmodule 

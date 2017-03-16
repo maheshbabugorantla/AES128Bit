@@ -8,10 +8,9 @@
 
 module KeySchedule
 (
-	input wire clk,
 	input wire [127:0] encryptKey,
-	output wire [1407:0] roundKeys,
-	output wire done
+	output wire [1407:0] roundKeys
+	//output wire done
 );
 		
 	reg [127:0] roundKey0, roundKey1, roundKey2, roundKey3, roundKey4, roundKey5, roundKey6, roundKey7, roundKey8, roundKey9, roundKey10;  
@@ -88,6 +87,6 @@ module KeySchedule
 	                        .outputRoundKey(roundKey10)
  			     );
 
-	assign roundKeys = { roundKey10, roundKey9, roundKey8, roundKey7, roundKey6, roundKey5, roundKey4, roundKey3, roundKey2, roundKey1, roundKey0 };
+	assign roundKeys = {roundKey10, roundKey9, roundKey8, roundKey7, roundKey6, roundKey5, roundKey4, roundKey3, roundKey2, roundKey1, roundKey0};
 	
 endmodule 

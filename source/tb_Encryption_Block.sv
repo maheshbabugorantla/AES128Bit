@@ -187,6 +187,38 @@ module tb_encryption_block();
 			$error("Test Case #%0d Failed", test_case_number);
 		end
 
+		// Test Case 11
+		test_case_number += 1;
+	
+		tb_inputData = 128'h8F088F33774CFFCC29D029D21CBB36A7;
+
+		#5;
+
+		if(tb_outputData == 128'h17AC22DA4C2D0315E7557CC116053E8E)
+		begin
+			$info("Test Case #%0d Passed", test_case_number);
+		end
+		else
+		begin
+			$error("Test Case #%0d Failed", test_case_number);
+		end
+
+		// Test Case 12
+		test_case_number += 1;
+	
+		tb_inputData = 128'h2326CA7D5CDB960E082B1159A876DFFF;
+
+		#5;
+
+		if(tb_outputData == 128'hE79A46E1D93BFFCA1330F3BE2EFF974D)
+		begin
+			$info("Test Case #%0d Passed", test_case_number);
+		end
+		else
+		begin
+			$error("Test Case #%0d Failed", test_case_number);
+		end
+
 	end
 
 endmodule 

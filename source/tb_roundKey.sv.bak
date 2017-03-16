@@ -21,7 +21,7 @@ module tb_roundKey();
 
 	// DUT Portmap
 	roundKey ROUND_KEY (
-				.encryptKey(tb_encryptKey),
+				.inputKey(tb_inputKey),
 				.count(tb_count),
 				.outputRoundKey(tb_outputRoundKey)
 			   );

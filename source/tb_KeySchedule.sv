@@ -12,7 +12,7 @@ module tb_KeySchedule();
 
 	// Test Bench Parameters
 	integer	test_case_number;
-	parameter DELAY = 10ns;
+	parameter DELAY = 100ns;
 
 	// DUT Parameters
 	reg [127:0] tb_encryptKey;
@@ -33,13 +33,14 @@ module tb_KeySchedule();
 		
 		#DELAY;
 		
-		
 		roundKey0 = tb_roundKeys[127:0];	
 
 		test_case_number = 1;
 
 		roundKey1 = tb_roundKeys[255:128];
 		
+		#5;
+
 		if(roundKey1 == 128'h84E696FD3790185EC1081F8653B6ABEB)
 		begin
 			$info("Test Case #%0d Passed", test_case_number);
@@ -52,6 +53,8 @@ module tb_KeySchedule();
 		test_case_number += 1;
 
 		roundKey2 = tb_roundKeys[383:256];
+
+		#5;
 
 		if( roundKey2 == 128'hC8847F10FF14674E3E1C78C86DAAD323)
 		begin

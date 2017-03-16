@@ -31,11 +31,11 @@ module tb_mix_columns();
 
 		tb_enable = 1;
 
-		tb_dataInput = 128'h97ECC3954D904AD8F24CE78CA6466E87;
+		tb_dataInput = 128'hA2B87EB552B63484AC44CBEFEB507F31;
 		
 		#2
 
-		if(tb_dataOutput == 128'h4C9F42BCA3703AA640D4E4A5741FAECC)
+		if(tb_dataOutput == 128'h47FE224AD5FD1B67AB8D4FA573FB166B)
 		begin
 			$info("Test Case #%0d Passed", test_case_num);	
 		end
