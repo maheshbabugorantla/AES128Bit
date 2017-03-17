@@ -271,6 +271,7 @@ module sbox_unit
 			8'hFD: begin byteSOut = 8'h54; end
 			8'hFE: begin byteSOut = 8'hBB; end
 			8'hFF: begin byteSOut = 8'h16; end
+			default: begin byteSOut = 8'h00; end
 		endcase
 	end
 

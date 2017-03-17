@@ -40,7 +40,7 @@ module encryption_controller
 		ROUND_KEY,
 		MIX_COLUMN,
 		NO_MIX_COLUMN,
-		WAIT_2,
+		CONTROL_OUTPUT,
 		ENCRYPT_OUT
 	} stateType;
 
@@ -49,7 +49,7 @@ module encryption_controller
 
 	always_ff@(posedge clk, negedge n_rst)
 	begin
-		if(n_rst == 1'b0)
+		if(n_rst == 1'b0 || count == 4'b1010)
 		begin
 			currentState <= IDLE;
 		end
@@ -69,7 +69,7 @@ module encryption_controller
 
 			IDLE:
 			begin
-				if(encryptEnable == 1'b1)
+				if(encryptEnable == 1'b1 && count != 4'b1010)
 				begin
 					nextState = KEY_SCHEDULE;
 				end
@@ -96,15 +96,20 @@ module encryption_controller
 
 			ROUND_KEY:
 			begin
-				if(count >= 4'b0001 && count <= 4'b1001) // Count >= 1 and Count <= 9
+				if(count == 4'b0000)
+				begin
+					nextState = CONTROL_OUTPUT;
+				end
+
+				if(count >= 4'b0001 && count <= 4'b1000) // Count >= 1 and Count <= 9
 				begin
 					nextState = MIX_COLUMN;
 				end
-				else if(count == 4'b1010) // Count == 10
+				else if(count == 4'b1001) // Count == 10
 				begin
 					nextState = NO_MIX_COLUMN;
 				end
-				else if(count == 4'b1011)
+				else if(count == 4'b1010)
 				begin
 					nextState = ENCRYPT_OUT;
 				end
@@ -112,16 +117,16 @@ module encryption_controller
 
 			MIX_COLUMN:
 			begin
-				nextState = WAIT_2;
+				nextState = CONTROL_OUTPUT;
 			end
 
 			NO_MIX_COLUMN:
 			begin
-				nextState = WAIT_2;
+				nextState = CONTROL_OUTPUT;
 			end
 
-			WAIT_2:
-			begin	
+			CONTROL_OUTPUT:
+			begin
 				nextState = ROUND_KEY;
 			end
 
@@ -147,6 +152,7 @@ module encryption_controller
 		temp_start = 1'b0;
 		temp_clear = 1'b0;
 		temp_count_enable = 1'b0;
+		temp_control_output = 1'b0;
 		temp_encryptedOut = 128'h00000000000000000000000000000000;
 
 		case(currentState)
@@ -157,10 +163,14 @@ module encryption_controller
 				temp_shift_rows_enable = 1'b0;
 				temp_mix_cols_enable = 1'b0;
 				temp_start = 1'b0;
-				temp_clear = 1'b1;
+				temp_clear = 1'b0;
 				temp_count_enable = 1'b0;
 				temp_control_output = 1'b0;
-				temp_encryptedOut = 128'h00000000000000000000000000000000;
+
+				if(count == 4'b0000)
+				begin
+					temp_encryptedOut = 128'h00000000000000000000000000000000;
+				end
 			end
 
 			KEY_SCHEDULE:
@@ -182,11 +192,11 @@ module encryption_controller
 				temp_mix_cols_enable = 1'b0;
 				temp_start = 1'b1;
 				temp_clear = 1'b0;
-				temp_count_enable = 1'b0; //
-				temp_control_output = 1'b0;
+				temp_count_enable = 1'b0; // 
+				temp_control_output = 1'b1;
 				temp_encryptedOut = dataIn;
 			end
-			
+
 			WAIT_1:
 			begin
 				temp_sub_bytes_enable = 1'b0;
@@ -195,6 +205,7 @@ module encryption_controller
 				temp_start = 1'b1;
 				temp_clear = 1'b0;
 				temp_count_enable = 1'b0; //
+				temp_control_output = 1'b1;
 				temp_encryptedOut = dataIn;
 			end
 
@@ -204,20 +215,25 @@ module encryption_controller
 				temp_start = 1'b0;
 				temp_clear = 1'b0;
 				temp_count_enable = 1'b1; //
-				temp_control_output = 1'b0;
 				temp_encryptedOut = dataIn;
+				temp_control_output = 1'b0;
 
-				if(count >= 4'b0001 && count <= 4'b1001)
+				if(count == 4'b0000)
 				begin
-					temp_sub_bytes_enable = 1'b1;
-					temp_shift_rows_enable = 1'b1;
-					temp_mix_cols_enable = 1'b1;
+					temp_control_output = 1'b1;
+				end
+
+				if(count >= 4'b0001 && count <= 4'b1000)
+				begin
+					temp_sub_bytes_enable = 1'b1; ///
+					temp_shift_rows_enable = 1'b1; ///
+					temp_mix_cols_enable = 1'b1; ///
 				end
 				else
 				begin
 					temp_sub_bytes_enable = 1'b0;
 					temp_shift_rows_enable = 1'b0;
-					temp_mix_cols_enable = 1'b0;					
+					temp_mix_cols_enable = 1'b0;
 				end
 			end
 
@@ -244,12 +260,12 @@ module encryption_controller
 				temp_control_output = 1'b0;
 				temp_encryptedOut = dataIn;
 			end
-	
-			WAIT_2:
+
+			CONTROL_OUTPUT:
 			begin
-				temp_sub_bytes_enable = 1'b0;
-				temp_shift_rows_enable = 1'b0;
-				temp_mix_cols_enable = 1'b0;
+				temp_sub_bytes_enable = 1'b1;
+				temp_shift_rows_enable = 1'b1;
+				temp_mix_cols_enable = 1'b1;
 				temp_start = 1'b0;
 				temp_clear = 1'b0;
 				temp_count_enable = 1'b0;
@@ -290,6 +306,6 @@ module encryption_controller
 	assign clear = temp_clear;
 	assign count_enable = temp_count_enable;
 	assign control_output = temp_control_output;
-	assign encryptedOut = (count == 4'b1011) ? temp_encryptedOut : 128'h00000000000000000000000000000000;
+	assign encryptedOut = (count == 4'b1010) ? temp_encryptedOut : 128'h00000000000000000000000000000000;
 
 endmodule 

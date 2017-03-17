@@ -203,7 +203,7 @@ module sbox_unit
 			8'hB9: begin byteSOut = 8'h56; end
 			8'hBA: begin byteSOut = 8'hF4; end
 			8'hBB: begin byteSOut = 8'hEA; end
-			8'hBD: begin byteSOut = 8'h65; end
+			8'hBC: begin byteSOut = 8'h65; end
 			8'hBD: begin byteSOut = 8'h7A; end
 			8'hBE: begin byteSOut = 8'hAE; end
 			8'hBF: begin byteSOut = 8'h08; end

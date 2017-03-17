@@ -127,7 +127,7 @@ module encryption_block (
 		end
 		else
 		begin
-			tempOutputData <= tempInputData;
+			tempOutputData <= tempOutputData2;
 		end
 	end
 
@@ -135,7 +135,7 @@ module encryption_block (
 	begin
 		tempInputData = (start == 1) ? inputData : tempOutputData1;
 
-		tempOutputData2 = (control_output == 1) ? tempInputData : tempOutputData2;
+		tempOutputData2 = (control_output == 1) ? tempInputData : tempOutputData;
 	end
 
 	assign outputData = encryptedOutput;

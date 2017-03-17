@@ -55,8 +55,11 @@ module tb_encryption_block();
 		tb_n_rst = 1'b1;
 		@(posedge tb_clk);
 
-		tb_inputData = 128'h098CEC229DEE5E9EBA66CDEACE150B20;
-		tb_key = 128'h5AD36F6FC4E127FE154D237E19324629;
+		//tb_inputData = 128'hE6FEBF30133874EBCB49226CD36D0D4F;
+		//tb_key = 128'h33DE20E331BA5A525AB7C2495A767B5A;
+
+		tb_inputData = 128'h7D8AE0F7CFA0A6CB09FB5D05A8EC586D;
+		tb_key = 128'h5E74E7BA66B0C7CC1B7697B3F9F51527;
 
 		@(posedge tb_clk);
 
@@ -64,7 +67,7 @@ module tb_encryption_block();
 		
 		@(posedge tb_clk);
 		@(posedge tb_clk); // Done with Key Schedule
-		@(posedge tb_clk);
+		@(posedge tb_clk); // 
 		@(posedge tb_clk); // Start Signal goes to 1
 		@(posedge tb_clk); // Start Signal goes to 0
 		@(posedge tb_clk); // Process Starts
@@ -81,6 +84,10 @@ module tb_encryption_block();
 		@(posedge tb_clk);
 		@(negedge tb_clk);
 
+		if(tb_outputData == 128'hdeb0f81341f3503a7cd01e2bc7cdd556)
+		begin
+			$info("Test Case #%0d Passed", test_case_number);
+		end
 	end
 
 endmodule 

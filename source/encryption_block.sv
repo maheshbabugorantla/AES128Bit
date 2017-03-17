@@ -80,7 +80,7 @@ module encryption_block (
 				.n_rst(n_rst),
 				.clear(clear),
 				.count_enable(count_enable),
-				.rollover_val(4'b1011),
+				.rollover_val(4'b1010),
 				.count_out(count),
 				.rollover_flag(rollover_flag)
 			);
@@ -135,7 +135,7 @@ module encryption_block (
 	begin
 		tempInputData = (start == 1) ? inputData : tempOutputData1;
 
-		tempOutputData2 = (control_output == 1) ? tempInputData : tempOutputData2;
+		tempOutputData2 = (control_output == 1) ? tempInputData : tempOutputData;
 	end
 
 	assign outputData = encryptedOutput;

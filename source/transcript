@@ -68,3 +68,13 @@ vlog encryption_controller.sv
 # Errors: 0, Warnings: 0
 clear
 # [H[2J
+vlog encryption_controller.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 17:44:08 on Mar 16,2017
+# vlog -reportprogress 300 encryption_controller.sv 
+# -- Compiling module encryption_controller
+# 
+# Top level modules:
+# 	encryption_controller
+# End time: 17:44:08 on Mar 16,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
