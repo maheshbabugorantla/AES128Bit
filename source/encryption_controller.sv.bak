@@ -49,7 +49,7 @@ module encryption_controller
 
 	always_ff@(posedge clk, negedge n_rst)
 	begin
-		if(n_rst == 1'b0 || count == 4'b1010)
+		if(n_rst == 1'b0)
 		begin
 			currentState <= IDLE;
 		end
@@ -139,7 +139,12 @@ module encryption_controller
 			begin
 				nextState = currentState;				
 			end
-		endcase
+			endcase
+
+			if(count == 4'b1010)
+			begin
+				nextState = IDLE;
+			end
 	end
 
 	// Output Logic
@@ -163,7 +168,7 @@ module encryption_controller
 				temp_shift_rows_enable = 1'b0;
 				temp_mix_cols_enable = 1'b0;
 				temp_start = 1'b0;
-				temp_clear = 1'b0;
+				temp_clear = 1'b1;
 				temp_count_enable = 1'b0;
 				temp_control_output = 1'b0;
 
@@ -196,7 +201,7 @@ module encryption_controller
 				temp_control_output = 1'b1;
 				temp_encryptedOut = dataIn;
 			end
-			
+
 			WAIT_1:
 			begin
 				temp_sub_bytes_enable = 1'b0;

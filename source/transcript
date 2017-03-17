@@ -78,3 +78,42 @@ vlog encryption_controller.sv
 # 	encryption_controller
 # End time: 17:44:08 on Mar 16,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+vlog encryption_controller.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 21:02:11 on Mar 16,2017
+# vlog -reportprogress 300 encryption_controller.sv 
+# -- Compiling module encryption_controller
+# 
+# Top level modules:
+# 	encryption_controller
+# End time: 21:02:11 on Mar 16,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog tb_encryption_block.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 21:19:05 on Mar 16,2017
+# vlog -reportprogress 300 tb_encryption_block.sv 
+# -- Compiling module tb_encryption_block
+# 
+# Top level modules:
+# 	tb_encryption_block
+# End time: 21:19:05 on Mar 16,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog tb_encryption_block.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 21:35:13 on Mar 16,2017
+# vlog -reportprogress 300 tb_encryption_block.sv 
+# -- Compiling module tb_encryption_block
+# ** Error: tb_encryption_block.sv(122): near ";": syntax error, unexpected ';', expecting '('
+# End time: 21:35:13 on Mar 16,2017, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.
+vlog tb_encryption_block.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 21:58:36 on Mar 16,2017
+# vlog -reportprogress 300 tb_encryption_block.sv 
+# -- Compiling module tb_encryption_block
+# 
+# Top level modules:
+# 	tb_encryption_block
+# End time: 21:58:36 on Mar 16,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

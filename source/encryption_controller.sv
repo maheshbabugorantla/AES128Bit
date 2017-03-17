@@ -49,7 +49,7 @@ module encryption_controller
 
 	always_ff@(posedge clk, negedge n_rst)
 	begin
-		if(n_rst == 1'b0 || count == 4'b1010)
+		if(n_rst == 1'b0)
 		begin
 			currentState <= IDLE;
 		end
@@ -139,7 +139,12 @@ module encryption_controller
 			begin
 				nextState = currentState;				
 			end
-		endcase
+			endcase
+
+			if(count == 4'b1010)
+			begin
+				nextState = IDLE;
+			end
 	end
 
 	// Output Logic
