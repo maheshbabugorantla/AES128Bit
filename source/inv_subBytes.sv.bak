@@ -10,16 +10,20 @@
 module inv_subBytes
 (
 	input wire [127:0] inputData,
-	output wire [127:0] byteSubData
+	output wire [127:0] invByteSubData
 );
+
+	reg [127:0] tempInvByteSubData;
 
 	genvar index;
 
 	generate
-		for(index = 0; index <= 120; index++)
+		for(index = 0; index <= 120; index+7)
 		begin
-			inv_sbox_unit INV_SBOX_UNIT( .inputByte(inputData[index + 7: index]), .invByteSOut(byteSubData[index + 7: index]) );
+			inv_sbox_unit INV_SBOX_UNIT(.inputByte(inputData[index + 7 : index]), .invByteSOut(tempInvByteSubData[index + 7 : index]));
 		end
 	endgenerate
+
+	assign invByteSubData = tempInvByteSubData;
 
 endmodule 

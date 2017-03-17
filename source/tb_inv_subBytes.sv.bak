@@ -113,7 +113,7 @@ module tb_inv_subBytes();
 
 			#(DELAY);
 
-			if(tb_invByteSubData == 128'hBE40C1148C1C8C8470AAC7BF54515D16)
+			if(tb_invByteSubData == 128'h)
 			begin
 				$info("Test Case %0d, PASSED", test_case_num);
 			end

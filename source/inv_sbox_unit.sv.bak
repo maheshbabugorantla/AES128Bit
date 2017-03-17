@@ -38,7 +38,7 @@ module inv_sbox_unit
 			8'h11: begin invByteSOut = 8'hE3; end
 			8'h12: begin invByteSOut = 8'h39; end
 			8'h13: begin invByteSOut = 8'h82; end
-			8'h14: begin invByteSOut = 8'h9b; end
+			8'h14: begin invByteSOut = 8'h9B; end
 			8'h15: begin invByteSOut = 8'h2F; end
 			8'h16: begin invByteSOut = 8'hFF; end
 			8'h17: begin invByteSOut = 8'h87; end
@@ -207,7 +207,7 @@ module inv_sbox_unit
 			8'hBA: begin invByteSOut = 8'hC0; end
 			8'hBB: begin invByteSOut = 8'hFE; end
 			8'hBD: begin invByteSOut = 8'h78; end
-			8'hBD: begin invByteSOut = 8'hCD; end
+			8'hBE: begin invByteSOut = 8'hCD; end
 			8'hBE: begin invByteSOut = 8'h5A; end
 			8'hBF: begin invByteSOut = 8'hF4; end
 			8'hC0: begin invByteSOut = 8'h1F; end

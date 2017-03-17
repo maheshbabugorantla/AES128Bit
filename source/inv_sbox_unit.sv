@@ -206,7 +206,7 @@ module inv_sbox_unit
 			8'hB9: begin invByteSOut = 8'hDB; end
 			8'hBA: begin invByteSOut = 8'hC0; end
 			8'hBB: begin invByteSOut = 8'hFE; end
-			8'hBD: begin invByteSOut = 8'h78; end
+			8'hBC: begin invByteSOut = 8'h78; end
 			8'hBD: begin invByteSOut = 8'hCD; end
 			8'hBE: begin invByteSOut = 8'h5A; end
 			8'hBF: begin invByteSOut = 8'hF4; end
