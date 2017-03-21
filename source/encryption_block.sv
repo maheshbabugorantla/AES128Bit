@@ -11,7 +11,7 @@ module encryption_block (
 	input wire encryptEnable,
 	input wire [127:0] key,
 	input wire [127:0] inputData,
-	output wire [127:0] outputData
+	output reg [127:0] outputData
 );
 
 	// Additional XOR Block
@@ -43,11 +43,13 @@ module encryption_block (
 	reg count_enable;
 	reg control_output;
 	reg [127:0] encryptedOutput;	
+	reg done;	
 
 	// KeyAddition Block
 	reg [127:0] tempOutputData;
 	reg [127:0] tempOutputData1;
-	reg [127:0] tempOutputData2;	
+	reg [127:0] tempOutputData2;
+	reg [127:0] tempOutputData3;
 
 	// Substitution Box Module
 	SBox SBOX_I 
@@ -107,7 +109,8 @@ module encryption_block (
 				.clear(clear),
 				.count_enable(count_enable),
 				.control_output(control_output),
-				.encryptedOut(encryptedOutput)
+				.encryptedOut(encryptedOutput),
+				.done(done)
 			);
 
 	// Key Addition Block
@@ -131,13 +134,25 @@ module encryption_block (
 		end
 	end
 
+	always_ff@(posedge clk, negedge n_rst)
+	begin
+		if(n_rst == 1'b0)
+		begin
+			outputData <= '0;
+		end
+		else
+		begin
+			outputData <= tempOutputData3;
+		end
+	end
+	
 	always_comb
 	begin
 		tempInputData = (start == 1) ? inputData : tempOutputData1;
 
 		tempOutputData2 = (control_output == 1) ? tempInputData : tempOutputData;
-	end
 
-	assign outputData = encryptedOutput;
+		tempOutputData3 = (done == 1) ? tempOutputData1 : outputData;
+	end
 
 endmodule 

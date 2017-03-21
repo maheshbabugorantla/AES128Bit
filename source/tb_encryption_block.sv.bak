@@ -12,8 +12,8 @@ module tb_encryption_block();
 
 	// Basic Test Bench Parameters
 	integer test_case_number;
-	parameter CLK_DELAY = 10ns;
-	
+	parameter CLK_DELAY = 1ns;
+
 	// DUT parameters
 	reg tb_clk;
 	reg tb_n_rst;
@@ -76,6 +76,7 @@ module tb_encryption_block();
 		@(posedge tb_clk); // ROUND_KEY 9
 		@(posedge tb_clk); // MIX_COLUMN
 		@(posedge tb_clk); // CONTROL_OUTPUT // Because everything else is a combinational logic other than the controller, the encryptedOutput will be available by this time
+		@(negedge tb_clk); // Wait for the Encrypted Output to Stabilize
 
 	endtask
 
@@ -119,8 +120,6 @@ module tb_encryption_block();
 		// Test Case 2
 		test_case_number += 1;
 
-		reset_dut;
-
     	        tb_inputData = 128'hE6FEBF30133874EBCB49226CD36D0D4F;
 		tb_key = 128'h33DE20E331BA5A525AB7C2495A767B5A;
 		
@@ -141,8 +140,6 @@ module tb_encryption_block();
 
 		// Test Case 3
 		test_case_number += 1;
-
-		reset_dut;
 
     	        tb_inputData = 128'hD07A7228CF5E1ED034E14FA06FA08D49;
 		tb_key = 128'hEED5A3496E321A41C925F0389B236E36;
@@ -165,8 +162,6 @@ module tb_encryption_block();
 		// Test Case 4
 		test_case_number += 1;
 
-		reset_dut;
-
     	        tb_inputData = 128'h47A9A7407366F06BA8D9233CDC85BDE9;
 		tb_key = 128'h8A969C8CB7ECF08B60A9E0D8647E6E21;
 		
@@ -188,8 +183,6 @@ module tb_encryption_block();
 		// Test Case 5
 		test_case_number += 1;
 
-		reset_dut;
-
     	        tb_inputData = 128'hB280F924255912E9F3FA10AE589B1785;
 		tb_key = 128'h6058C3334044E41A2C71E6205B27E854;
 		
@@ -199,7 +192,7 @@ module tb_encryption_block();
 
 		wait_for_encryption;
 
-		if(tb_outputData == 128'h)
+		if(tb_outputData == 128'h2686C49884668776DD0F02A34150643F)
 		begin
 			$info("Test Case #%0d Passed", test_case_number);
 		end

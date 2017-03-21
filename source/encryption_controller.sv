@@ -20,7 +20,8 @@ module encryption_controller
 	output wire clear,
 	output wire count_enable,
 	output wire control_output,
-	output wire [127:0] encryptedOut
+	output wire [127:0] encryptedOut,
+	output reg done
 );
 	reg temp_sub_bytes_enable;
 	reg temp_shift_rows_enable;
@@ -168,7 +169,7 @@ module encryption_controller
 				temp_shift_rows_enable = 1'b0;
 				temp_mix_cols_enable = 1'b0;
 				temp_start = 1'b0;
-				temp_clear = 1'b0;
+				temp_clear = 1'b1;
 				temp_count_enable = 1'b0;
 				temp_control_output = 1'b0;
 
@@ -302,6 +303,16 @@ module encryption_controller
 				temp_encryptedOut = 128'h00000000000000000000000000000000;
 			end
 		endcase
+
+		if(count == 4'b1010)
+		begin
+			done = 1;
+			temp_clear = 1;
+		end
+		else
+		begin
+			done = 0;
+		end
 	end
 
 	assign sub_bytes_enable = temp_sub_bytes_enable;

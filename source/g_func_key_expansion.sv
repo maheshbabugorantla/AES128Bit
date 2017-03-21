@@ -14,7 +14,7 @@ module g_func_key_expansion
 );
 
 	reg [31:0] tempOutput;
-	
+
 	// These are the RConstants used from the Rjindael's Wiki 
 	// Because we need only constants from 1 - 10 as there are only 10 round in AES 128-bit encryption
 	reg [7:0] R_Const [0:9]; // = {8'h01, 8'h02, 8'h04, 8'h08, 8'h10, 8'h20, 8'h40, 8'h80, 8'h1b, 8'h36};
