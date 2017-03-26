@@ -8,13 +8,3 @@
 # //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
-vlog encryption_block.sv
-# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
-# Start time: 12:58:49 on Mar 21,2017
-# vlog -reportprogress 300 encryption_block.sv 
-# -- Compiling module encryption_block
-# ** Error: encryption_block.sv(146): near "end": syntax error, unexpected end, expecting ';'
-# ** Error: encryption_block.sv(158): near "endmodule": syntax error, unexpected endmodule
-# End time: 12:58:49 on Mar 21,2017, Elapsed time: 0:00:00
-# Errors: 2, Warnings: 0
-# /package/eda/mg/questa10.3b/questasim/linux_x86_64/vlog failed.

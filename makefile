@@ -16,15 +16,43 @@ include /home/ecegrid/a/ece337/Course_Prod/course_make_vars
 # (do not include the source folder in the name)
 # NOTE: YOU WILL NEED TO SET THIS VARIABLE'S VALUE WHEN WORKING WITH HEIRARCHICAL DESIGNS
 # AND THE AUTOMATED GRADING SYSTEM
-COMPONENT_FILES	:= gf_mul2.sv gf_mul3.sv
+
+### Component Files for the Mix Columns Block
+#COMPONENT_FILES	:= gf_mul2.sv gf_mul3.sv
+
+### Component Files for the Encryption Block
+COMPONENT_FILES	:= gf_mul2.sv gf_mul3.sv sbox_unit.sv shiftRows.sv SBox.sv mix_columns.sv encryption_controller.sv flex_counter.sv KeySchedule.sv KeyAddition.sv g_func_key_expansion.sv roundKey.sv
+
+### Component Files for the Decryption Block
+
+#COMPONENT_FILES	:= gf_mul9.sv gf_mulB.sv gf_mulD.sv gf_mulE.sv inv_sbox_unit.sv inv_shiftRows.sv inv_subBytes.sv inverse_mix_columns.sv
+
+# For the Inverse Mix Columns Module
+#COMPONENT_FILES	:= gf_mul9.sv gf_mulB.sv gf_mulD.sv gf_mulE.sv
+
+# For KeySchedule Module
+#COMPONENT_FILES	:= sbox_unit.sv g_func_key_expansion.sv roundKey.sv
+#COMPONENT_FILES	:= sbox_unit.sv g_func_key_expansion.sv
 
 # Specify the name of the top level file (do not include the source folder in the name)
 # NOTE: YOU WILL NEED TO SET THIS VARIABLE'S VALUE WHEN WORKING WITH HEIRARCHICAL DESIGNS
 # AND THE AUTOMATED GRADING SYSTEM
-TOP_LEVEL_FILE	:= mix_columns.sv
+
+#TOP_LEVEL_FILE := mix_columns.sv
+
+### This is for the Encrption Block
+TOP_LEVEL_FILE	:= encryption_block.sv
+
+### This is for the Decryption Block
+#TOP_LEVEL_FILE := decryption_block.sv
+
+### This is for the KeySchedule Block
+#TOP_LEVEL_FILE := roundKey.sv
+#TOP_LEVEL_FILE := KeySchedule.sv
 
 # Specify the filepath of the test bench you want to use (ie. tb_top_level.sv)
 # (do not include the source folder in the name)
+
 TEST_BENCH	:= tb_$(TOP_LEVEL_FILE)
 
 # Fill in the names of any test bench helper code files (code files referenced by your testbenches
@@ -268,8 +296,8 @@ tbsim_%_mapped: $(M_WORK_LIB)/% $(M_WORK_LIB)/tb_%
 
 # Set the default value of the clock name and clock period to an empty string so that clock timing will
 # only be activated in the SYN_CMDS definition if they were overwritten at invocation
-CLOCK_NAME 		:=
-CLOCK_PERIOD	:=
+CLOCK_NAME 	:= clk
+CLOCK_PERIOD	:= 6
 
 # Set the default value of the source files for sub modules to be an empty string so that
 # it will only be used if overwritten at invocation

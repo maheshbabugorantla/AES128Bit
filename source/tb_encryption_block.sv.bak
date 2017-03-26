@@ -12,7 +12,7 @@ module tb_encryption_block();
 
 	// Basic Test Bench Parameters
 	integer test_case_number;
-	parameter CLK_DELAY = 1ns;
+	parameter CLK_DELAY = 10ns;
 
 	// DUT parameters
 	reg tb_clk;
@@ -96,7 +96,7 @@ module tb_encryption_block();
 	initial
 	begin
 		test_case_number = 1;
-				
+
 		reset_dut;		
 
 		tb_inputData = 128'h7D8AE0F7CFA0A6CB09FB5D05A8EC586D;
@@ -200,10 +200,33 @@ module tb_encryption_block();
 		begin
 			$error("Test Case #%0d Failed", test_case_number);
 		end
+
+		// Test Case 6
+		test_case_number += 1;
+
+		reset_dut
+
+    	        tb_inputData = 128'hC0C148CF7C52DC9A10CCAB979FF03920;
+		tb_key = 128'hAD711EC0ACD35F80C3E5EDD4E1336B6A;
+
+		@(posedge tb_clk); // IDLE
+
+		tb_encryptEnable = 1'b1;
+
+		wait_for_encryption;
+
+		if(tb_outputData == 128'h0EA6416862183B71C5A2B66E320FDDEB)
+		begin
+			$info("Test Case #%0d Passed", test_case_number);
+		end
+		else
+		begin
+			$error("Test Case #%0d Failed", test_case_number);
+		end
 	end
 endmodule 
 
-		// Test Case 1
+// Test Case 1
 /*		test_case_number = 1;
 	
 		tb_inputData = 128'hEAB09685AD455D652D339804F05C83C5;
