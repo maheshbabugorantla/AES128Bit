@@ -142,7 +142,7 @@ module encryption_block (
 		end
 		else
 		begin
-			outputData <= tempOutputData3
+			outputData <= tempOutputData3;
 		end
 	end
 	

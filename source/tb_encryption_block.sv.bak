@@ -8,6 +8,8 @@
 
 `timescale 1ns/10ps
 
+// 166000000/(100000000/16) => 
+
 module tb_encryption_block();
 
 	// Basic Test Bench Parameters
@@ -204,7 +206,7 @@ module tb_encryption_block();
 		// Test Case 6
 		test_case_number += 1;
 
-		reset_dut
+		reset_dut;
 
     	        tb_inputData = 128'hC0C148CF7C52DC9A10CCAB979FF03920;
 		tb_key = 128'hAD711EC0ACD35F80C3E5EDD4E1336B6A;

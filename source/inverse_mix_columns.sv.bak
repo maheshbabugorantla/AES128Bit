@@ -9,8 +9,11 @@
 module inverse_mix_columns
 (
 	input wire [127:0] invDataIn,
-	input wire [127:0] invDataOut
+	input wire [127:0] enable,
+	output wire [127:0] invDataOut
 );
+
+	reg[127:0] tempInvDataOut;
 
 	// For first Column
 	reg [7:0] in_00, in_01, in_02, in_03;
@@ -84,7 +87,7 @@ module inverse_mix_columns
 	assign out_02 = byte_out_d02 ^ byte_out_902 ^ byte_out_e02 ^ byte_out_b02;
 	assign out_03 = byte_out_b03 ^ byte_out_d03 ^ byte_out_903 ^ byte_out_e03;
 
-	assign invDataOut[31:0] = {out_00, out_01, out_02, out_03};
+	assign tempInvDataOut[31:0] = {out_00, out_01, out_02, out_03};
 
 /***********************************************************************************/
 
@@ -135,7 +138,7 @@ module inverse_mix_columns
 	assign out_12 = byte_out_d12 ^ byte_out_912 ^ byte_out_e12 ^ byte_out_b12;
 	assign out_13 = byte_out_b13 ^ byte_out_d13 ^ byte_out_913 ^ byte_out_e13;
 
-	assign invDataOut[63:32] = {out_10, out_11, out_12, out_13};
+	assign tempInvDataOut[63:32] = {out_10, out_11, out_12, out_13};
 
 /***********************************************************************************/
 
@@ -186,7 +189,7 @@ module inverse_mix_columns
 	assign out_22 = byte_out_d22 ^ byte_out_922 ^ byte_out_e22 ^ byte_out_b22;
 	assign out_23 = byte_out_b23 ^ byte_out_d23 ^ byte_out_923 ^ byte_out_e23;
 
-	assign invDataOut[95:64] = {out_20, out_21, out_22, out_23};
+	assign tempInvDataOut[95:64] = {out_20, out_21, out_22, out_23};
 
 /***********************************************************************************/
 
@@ -237,8 +240,10 @@ module inverse_mix_columns
 	assign out_32 = byte_out_d32 ^ byte_out_932 ^ byte_out_e32 ^ byte_out_b32;
 	assign out_33 = byte_out_b33 ^ byte_out_d33 ^ byte_out_933 ^ byte_out_e33;
 
-	assign invDataOut[127:96] = {out_30, out_31, out_32, out_33};
+	assign tempInvDataOut[127:96] = {out_30, out_31, out_32, out_33};
 
 /***********************************************************************************/
+
+	assign invDataOut = (enable == 1) ? tempInvDataOut : invDataIn;
 
 endmodule 

@@ -25,7 +25,7 @@ include /home/ecegrid/a/ece337/Course_Prod/course_make_vars
 
 ### Component Files for the Decryption Block
 
-COMPONENT_FILES	:= gf_mul9.sv gf_mulB.sv gf_mulD.sv gf_mulE.sv inv_sbox_unit.sv sbox_unit.sv inv_shiftRows.sv inv_subBytes.sv inverse_mix_columns.sv  decryption_controller.sv flex_counter.sv KeySchedule.sv KeyAddition_dec.sv g_func_key_expansion.sv roundKey.sv
+COMPONENT_FILES	:= gf_mul9.sv gf_mulB.sv gf_mulD.sv gf_mulE.sv inv_sbox_unit.sv inv_shiftRows.sv inv_subBytes.sv inverse_mix_columns.sv  decryption_controller.sv flex_counter.sv KeySchedule.sv KeyAddition.sv g_func_key_expansion.sv roundKey.sv
 
 # For the Inverse Mix Columns Module
 #COMPONENT_FILES	:= gf_mul9.sv gf_mulB.sv gf_mulD.sv gf_mulE.sv

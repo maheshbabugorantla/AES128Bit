@@ -10,6 +10,7 @@
 module inv_subBytes
 (
 	input wire [127:0] inputData,
+	input wire enable,
 	output wire [127:0] invByteSubData
 );
 
@@ -24,6 +25,6 @@ module inv_subBytes
 		end
 	endgenerate
 
-	assign invByteSubData = tempInvByteSubData;
+	assign invByteSubData = (enable == 1) ? tempInvByteSubData : inputData;
 
 endmodule 

@@ -8,11 +8,13 @@
 
 `timescale 1ns/10ps
 
+// 166000000/(100000000/16) => 1
+
 module tb_encryption_block();
 
 	// Basic Test Bench Parameters
 	integer test_case_number;
-	parameter CLK_DELAY = 10ns;
+	parameter CLK_DELAY = 6ns;
 
 	// DUT parameters
 	reg tb_clk;

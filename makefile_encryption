@@ -21,11 +21,11 @@ include /home/ecegrid/a/ece337/Course_Prod/course_make_vars
 #COMPONENT_FILES	:= gf_mul2.sv gf_mul3.sv
 
 ### Component Files for the Encryption Block
-#COMPONENT_FILES := gf_mul2.sv gf_mul3.sv sbox_unit.sv shiftRows.sv SBox.sv mix_columns.sv encryption_controller.sv flex_counter.sv KeySchedule.sv KeyAddition.sv g_func_key_expansion.sv roundKey.sv
+COMPONENT_FILES	:= gf_mul2.sv gf_mul3.sv sbox_unit.sv shiftRows.sv SBox.sv mix_columns.sv encryption_controller.sv flex_counter.sv KeySchedule.sv KeyAddition.sv g_func_key_expansion.sv roundKey.sv
 
 ### Component Files for the Decryption Block
 
-COMPONENT_FILES	:= gf_mul9.sv gf_mulB.sv gf_mulD.sv gf_mulE.sv inv_sbox_unit.sv sbox_unit.sv inv_shiftRows.sv inv_subBytes.sv inverse_mix_columns.sv  decryption_controller.sv flex_counter.sv KeySchedule.sv KeyAddition_dec.sv g_func_key_expansion.sv roundKey.sv
+#COMPONENT_FILES	:= gf_mul9.sv gf_mulB.sv gf_mulD.sv gf_mulE.sv inv_sbox_unit.sv inv_shiftRows.sv inv_subBytes.sv inverse_mix_columns.sv
 
 # For the Inverse Mix Columns Module
 #COMPONENT_FILES	:= gf_mul9.sv gf_mulB.sv gf_mulD.sv gf_mulE.sv
@@ -41,7 +41,7 @@ COMPONENT_FILES	:= gf_mul9.sv gf_mulB.sv gf_mulD.sv gf_mulE.sv inv_sbox_unit.sv 
 #TOP_LEVEL_FILE := mix_columns.sv
 
 ### This is for the Encrption Block
-TOP_LEVEL_FILE	:= decryption_block.sv
+TOP_LEVEL_FILE	:= encryption_block.sv
 
 ### This is for the Decryption Block
 #TOP_LEVEL_FILE := decryption_block.sv
@@ -372,7 +372,7 @@ $(if $(and $(CLOCK_NAME), $(CLOCK_PERIOD)), create_clock "$(CLOCK_NAME)" -name "
 compile -map_effort medium
 
 # Step 4: Output reports
-report_timing -path full -delay max -max_paths 5 -nworst 5 > reports/$(MOD_NAME).rep
+report_timing -path full -delay max -max_paths 1 -nworst 1 > reports/$(MOD_NAME).rep
 report_area >> reports/$(MOD_NAME).rep
 report_power -hier >> reports/$(MOD_NAME).rep
 

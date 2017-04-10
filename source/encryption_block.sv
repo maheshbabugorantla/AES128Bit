@@ -15,7 +15,7 @@ module encryption_block (
 );
 
 	// Additional XOR Block
-	reg [127:0] tempInputData;	
+	reg [127:0] tempInputData;
 
 	// Signals for ByteSubstitution Layer
 	reg [127:0] byteSubData;
