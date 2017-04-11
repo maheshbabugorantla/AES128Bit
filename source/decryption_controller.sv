@@ -144,7 +144,7 @@ nextState = currentState;
 			end
 			endcase
 
-			if(count == 4'b1010)
+			if(count == 4'b1100)
 			begin
 				nextState = IDLE;
 			end
@@ -328,15 +328,14 @@ nextState = currentState;
 			end
 		endcase
 
-/*		if(count == 4'b1011)
+		if(count == 4'b1011)
 		begin
 			done = 1;
-			temp_clear = 1;
 		end
 		else
 		begin
 			done = 0;
-		end */
+		end
 	end
 
 	assign inv_sub_bytes_enable = temp_inv_sub_bytes_enable;
@@ -347,6 +346,6 @@ nextState = currentState;
 	assign clear = temp_clear;
 	assign count_enable = temp_count_enable;
 	assign control_output = temp_control_output;
-	assign decryptedOut = (count == 4'b1011) ? temp_decryptedOut : 128'h00000000000000000000000000000000;
+	assign decryptedOutput = (count == 4'b1011) ? temp_decryptedOut : 128'h00000000000000000000000000000000;
 
 endmodule 
