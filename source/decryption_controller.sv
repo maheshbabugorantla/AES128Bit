@@ -158,6 +158,7 @@ nextState = currentState;
 		temp_inv_sub_bytes_enable = 1'b0;
 		temp_inv_shift_rows_enable = 1'b0;		
 		temp_inv_mix_cols_enable = 1'b0;
+		temp_inv_key_addition_enable = 1'b0;
 		temp_start = 1'b0;
 		temp_clear = 1'b0;
 		temp_count_enable = 1'b0;

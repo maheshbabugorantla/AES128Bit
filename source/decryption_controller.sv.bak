@@ -328,7 +328,7 @@ nextState = currentState;
 			end
 		endcase
 
-		if(count == 4'b1100)
+		if(count == 4'b1011)
 		begin
 			done = 1;
 		end
