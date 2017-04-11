@@ -104,16 +104,15 @@ nextState = currentState;
 				begin
 					nextState = CONTROL_OUTPUT;
 				end
-
-				else if(count >= 4'b0010 && count <= 4'b1001) // Count >= 2 and Count <= 9
-				begin
-					nextState = INV_MIX_COLUMN;
-				end
 				else if(count == 4'b0001) // Count == 1
 				begin
 					nextState = NO_INV_MIX_COLUMN;
 				end
-				else if(count == 4'b1010)
+				else if(count >= 4'b0010 && count <= 4'b1010) // Count >= 2 and Count <= 10
+				begin
+					nextState = INV_MIX_COLUMN;
+				end
+				else if(count == 4'b1011)
 				begin
 					nextState = DECRYPT_OUT;
 				end
@@ -244,7 +243,6 @@ nextState = currentState;
 					temp_inv_mix_cols_enable = 1'b0;
 					temp_inv_key_addition_enable = 1'b1;
 					temp_control_output = 1'b1;
-//					temp_count_enable = 1'b0;
 				end
 				else if(count >= 4'b0010 && count <= 4'b1010)
 				begin
@@ -330,7 +328,7 @@ nextState = currentState;
 			end
 		endcase
 
-		if(count == 4'b1011)
+/*		if(count == 4'b1011)
 		begin
 			done = 1;
 			temp_clear = 1;
@@ -338,7 +336,7 @@ nextState = currentState;
 		else
 		begin
 			done = 0;
-		end
+		end */
 	end
 
 	assign inv_sub_bytes_enable = temp_inv_sub_bytes_enable;
@@ -349,6 +347,6 @@ nextState = currentState;
 	assign clear = temp_clear;
 	assign count_enable = temp_count_enable;
 	assign control_output = temp_control_output;
-	assign decryptedOut = (count == 4'b1010) ? temp_decryptedOut : 128'h00000000000000000000000000000000;
+	assign decryptedOut = (count == 4'b1011) ? temp_decryptedOut : 128'h00000000000000000000000000000000;
 
 endmodule 

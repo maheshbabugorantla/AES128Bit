@@ -35,6 +35,12 @@ add wave -noupdate -radix binary /tb_decryption_block/DECRYPTION_BLK/KEY_ADDITIO
 add wave -noupdate -radix hexadecimal /tb_decryption_block/DECRYPTION_BLK/KEY_ADDITION/dataOut
 add wave -noupdate -radix hexadecimal /tb_decryption_block/DECRYPTION_BLK/KEY_ADDITION/roundKey
 add wave -noupdate -radix unsigned /tb_decryption_block/DECRYPTION_BLK/KEY_ADDITION/count
+add wave -noupdate -divider {Counter Logic}
+add wave -noupdate /tb_decryption_block/DECRYPTION_BLK/COUNTER_TEN/clear
+add wave -noupdate /tb_decryption_block/DECRYPTION_BLK/COUNTER_TEN/count_enable
+add wave -noupdate /tb_decryption_block/DECRYPTION_BLK/COUNTER_TEN/rollover_val
+add wave -noupdate /tb_decryption_block/DECRYPTION_BLK/COUNTER_TEN/count_out
+add wave -noupdate /tb_decryption_block/DECRYPTION_BLK/COUNTER_TEN/rollover_flag
 add wave -noupdate -divider {Decryption Controller}
 add wave -noupdate -radix binary /tb_decryption_block/DECRYPTION_BLK/DECRYPTION_CONTROLLER/decryptEnable
 add wave -noupdate -radix unsigned /tb_decryption_block/DECRYPTION_BLK/DECRYPTION_CONTROLLER/count
@@ -52,13 +58,14 @@ add wave -noupdate -radix binary /tb_decryption_block/DECRYPTION_BLK/DECRYPTION_
 add wave -noupdate -radix hexadecimal /tb_decryption_block/DECRYPTION_BLK/DECRYPTION_CONTROLLER/temp_decryptedOut
 add wave -noupdate /tb_decryption_block/DECRYPTION_BLK/DECRYPTION_CONTROLLER/currentState
 add wave -noupdate /tb_decryption_block/DECRYPTION_BLK/DECRYPTION_CONTROLLER/nextState
+add wave -noupdate /tb_decryption_block/DECRYPTION_BLK/COUNTER_TEN/rollflag_1
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {204989 ps} 0}
+WaveRestoreCursors {{Cursor 1} {204166 ps} 0}
 quietly wave cursor active 1
-configure wave -namecolwidth 627
+configure wave -namecolwidth 190
 configure wave -valuecolwidth 273
 configure wave -justifyvalue left
-configure wave -signalnamewidth 0
+configure wave -signalnamewidth 1
 configure wave -snapdistance 10
 configure wave -datasetprefix 0
 configure wave -rowmargin 4
@@ -69,4 +76,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {105801 ps}
+WaveRestoreZoom {68766 ps} {312171 ps}

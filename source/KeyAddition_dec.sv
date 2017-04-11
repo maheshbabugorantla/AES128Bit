@@ -77,7 +77,7 @@ module KeyAddition_dec
 			end
 			default:
 			begin
-				roundKey = 128'h1111111111111111;		
+				roundKey = 128'hFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF;
 			end
 		endcase
 	end

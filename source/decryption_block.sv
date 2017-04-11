@@ -87,7 +87,7 @@ module decryption_block
 				.n_rst(n_rst),
 				.clear(clear),
 				.count_enable(count_enable),
-				.rollover_val(4'b1011),
+				.rollover_val(4'b1100),
 				.count_out(count),
 				.rollover_flag(rollover_flag)
 			);
@@ -123,7 +123,7 @@ module decryption_block
 	KeyAddition_dec KEY_ADDITION
 			(
 				.dataIn(tempOutputData),
-				.count(4'b1011 - count),
+				.count(4'b1100 - count - 4'b0001),
 				.roundKeys(roundKeys),
 				.enable(inv_key_addition_enable),
 				.dataOut(tempOutputData1)
