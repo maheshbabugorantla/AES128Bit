@@ -106,11 +106,11 @@ nextState = currentState;
 				end
 				else if(count == 4'b0001) // Count == 1
 				begin
-					nextState = NO_INV_MIX_COLUMN;
+					nextState = NO_INV_MIX_COLUMN; //NO_INV_MIX_COLUMN;
 				end
 				else if(count >= 4'b0010 && count <= 4'b1010) // Count >= 2 and Count <= 10
 				begin
-					nextState = INV_MIX_COLUMN;
+					nextState = INV_MIX_COLUMN; //INV_MIX_COLUMN;
 				end
 				else if(count == 4'b1011)
 				begin

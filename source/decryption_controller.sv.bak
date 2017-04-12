@@ -106,11 +106,11 @@ nextState = currentState;
 				end
 				else if(count == 4'b0001) // Count == 1
 				begin
-					nextState = NO_INV_MIX_COLUMN;
+					nextState = CONTROL_OUTPUT; //NO_INV_MIX_COLUMN;
 				end
 				else if(count >= 4'b0010 && count <= 4'b1010) // Count >= 2 and Count <= 10
 				begin
-					nextState = INV_MIX_COLUMN;
+					nextState = CONTROL_OUTPUT; //INV_MIX_COLUMN;
 				end
 				else if(count == 4'b1011)
 				begin
@@ -158,6 +158,7 @@ nextState = currentState;
 		temp_inv_sub_bytes_enable = 1'b0;
 		temp_inv_shift_rows_enable = 1'b0;		
 		temp_inv_mix_cols_enable = 1'b0;
+		temp_inv_key_addition_enable = 1'b0;
 		temp_start = 1'b0;
 		temp_clear = 1'b0;
 		temp_count_enable = 1'b0;

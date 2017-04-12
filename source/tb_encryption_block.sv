@@ -14,7 +14,7 @@ module tb_encryption_block();
 
 	// Basic Test Bench Parameters
 	integer test_case_number;
-	parameter CLK_DELAY = 6ns;
+	parameter CLK_DELAY = 8ns;
 
 	// DUT parameters
 	reg tb_clk;

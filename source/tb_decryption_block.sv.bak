@@ -12,7 +12,7 @@ module tb_decryption_block();
 
 	// Basic Test Bench Parameters
 	integer test_case_number = 1;
-	parameter CLK_DELAY = 8ns;
+	parameter CLK_DELAY = 9ns;
 
 	// DUT Parameters
 	reg tb_clk;
@@ -127,7 +127,7 @@ module tb_decryption_block();
 			$error("Test Case #%0d Failed", test_case_number);
 		end
 
-/*		// Test Case 2
+		// Test Case 2
 
 		test_case_number += 1;
 
@@ -234,9 +234,6 @@ module tb_decryption_block();
 		begin
 			$error("Test Case #%0d Failed", test_case_number);
 		end
-
-*/
-
 	end
 
 endmodule 
