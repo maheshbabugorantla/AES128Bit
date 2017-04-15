@@ -133,7 +133,7 @@ module decryption_block
 	begin
 		if(n_rst == 0)
 		begin
-			tempOutputData <= '0; 	
+			tempOutputData <= '0;
 		end
 		else
 		begin

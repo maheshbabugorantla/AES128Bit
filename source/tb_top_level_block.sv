@@ -12,7 +12,7 @@ module tb_top_level_block();
 
 	// Test Bench Parameters
 	integer test_case_number = 1;	
-	parameter CLK_PERIOD = 8ns;
+	parameter CLK_PERIOD = 10ns;
 
 	// Common Test Bench Signals
 	reg tb_clk;
@@ -96,9 +96,12 @@ module tb_top_level_block();
 		tb_n_rst = 1'b1;
 		@(posedge tb_clk);
 		tb_n_rst = 1'b0;
-		//tb_encrypt_enable = 1'b0;
 		@(posedge tb_clk);
 		tb_n_rst = 1'b1;
+		@(negedge tb_clk);
+		tb_rx_read_en = 0;
+		tb_rx_write_en = 0;
+		tb_rx_data_in = 32'h00000000;
 		@(negedge tb_clk);
 	endtask
 
@@ -179,6 +182,10 @@ module tb_top_level_block();
 		@(negedge tb_clk); // Wait for the Decrypted Output to Stabilize
 		@(negedge tb_clk);
 		@(negedge tb_clk);
+		@(negedge tb_clk); // Wait for the Decrypted Output to Stabilize
+		@(negedge tb_clk); // Wait for the Decrypted Output to Stabilize
+		@(negedge tb_clk); // Wait for the Decrypted Output to Stabilize
+		@(negedge tb_clk); // Wait for the Decrypted Output to Stabilize
 	endtask
 
 	// Enqueue 32-bit data FIFO into the RX FIFO
@@ -195,6 +202,12 @@ module tb_top_level_block();
 		end
 	endtask
 
+	/*
+	task do_thing (input wire[2:0] a, output ...);
+		
+	endtask
+	*/
+
 	// Dequeue all the 128-bit data from the RX_FIFO
 	task dequeue_rx_fifo;
 		tb_rx_write_en = 1'b0;
@@ -206,11 +219,20 @@ module tb_top_level_block();
 		tb_rx_read_en = 1'b0;
 	endtask
 
+	task reset_rx_fifo;
+		tb_rx_read_en = 0;
+		tb_rx_write_en = 0;
+		tb_rx_data_in = 32'h00000000;
+	endtask
+
 	initial
 	begin
 
 		reset_dut; // Resetting the Top Level Block
-			
+//		reset_rx_fifo; // Resetting the RX FIFO
+
+		/*************************************** Testing AES Decryption Integration ****************************************/
+
 		// Enqueue all the 4 32-bit Data Packets  
 		enqueue_rx_fifo (32'hdeb0f813); // Enqueue 32 Bit Data Packet 1
 		enqueue_rx_fifo (32'h41f3503a); // Enqueue 32 Bit Data Packet 2
@@ -255,11 +277,11 @@ module tb_top_level_block();
 
 		if(tb_dataPacketOut == 128'h7D8AE0F7CFA0A6CB09FB5D05A8EC586D)
 		begin
-			$info("Test Case #%0d Passed", test_case_number);
+			$info("Decryption: Test Case #%0d Passed", test_case_number);
 		end
 		else
 		begin
-			$error("Test Case #%0d Failed", test_case_number);
+			$error("Decryption: Test Case #%0d Failed", test_case_number);
 		end
 
 		test_case_number = test_case_number + 1;
@@ -295,6 +317,8 @@ module tb_top_level_block();
 			$error("Test case #%0d Failed", test_case_number);
 		end
 
+		test_case_number = test_case_number + 1;
+
 		tb_dataPacketIn = tb_rx_data_out; // Using the Data from the RX_FIFO
 		tb_Key = 128'h5E74E7BA66B0C7CC1B7697B3F9F51527;
 
@@ -308,11 +332,176 @@ module tb_top_level_block();
 
 		if(tb_dataPacketOut == 128'hdeb0f81341f3503a7cd01e2bc7cdd556)
 		begin
-			$info("Test Case #%0d Passed", test_case_number);
+			$info("Encryption: Test Case #%0d Passed", test_case_number);
 		end
 		else
 		begin
-			$error("Test Case #%0d Failed", test_case_number);
+			$error("Encryption: Test Case #%0d Failed", test_case_number);
+		end
+
+		/*************************************** Testing AES Decryption Integration ****************************************/
+
+		test_case_number = test_case_number + 1;
+
+		// Enqueue all the 4 32-bit Data Packets  
+		enqueue_rx_fifo (32'hdeb0f813); // Enqueue 32 Bit Data Packet 1
+		enqueue_rx_fifo (32'h41f3503a); // Enqueue 32 Bit Data Packet 2
+		enqueue_rx_fifo (32'h7cd01e2b); // Enqueue 32 Bit Data Packet 3
+		enqueue_rx_fifo (32'hc7cdd556); // Enqueue 32 Bit Data Packet 4
+
+		if(tb_rx_fifo_full == 1'b1)
+		begin
+			$info("Test case #%0d Passed", test_case_number);
+		end
+		else
+		begin
+			$error("Test case #%0d Failed", test_case_number);
+		end
+
+		test_case_number = test_case_number + 1;
+
+		// Dequeue all the 32-bit data packets
+		dequeue_rx_fifo;
+
+		if(tb_rx_data_out == 128'hdeb0f81341f3503a7cd01e2bc7cdd556)
+		begin
+			$info("Test case #%0d Passed", test_case_number);
+		end
+		else
+		begin
+			$error("Test case #%0d Failed", test_case_number);
+		end
+
+		test_case_number = test_case_number + 1;
+
+		tb_dataPacketIn = tb_rx_data_out; // Using the Data from the RX_FIFO
+		tb_Key = 128'h5E74E7BA66B0C7CC1B7697B3F9F51527;
+
+		// When tb_encrypt_enable = 1'b1 => ENCRYPTION TASK 
+		// And  tb_encrypt_enable = 1'b0 => DECRYPTION TASK
+		tb_encrypt_enable = 1'b0;
+		
+		@(posedge tb_clk); // IDLE
+
+		wait_for_decryption;
+
+		if(tb_dataPacketOut == 128'h7D8AE0F7CFA0A6CB09FB5D05A8EC586D)
+		begin
+			$info("Decryption: Test Case #%0d Passed", test_case_number);
+		end
+		else
+		begin
+			$error("Decryption: Test Case #%0d Failed", test_case_number);
+		end
+
+		// Test No. 2
+
+		/*************************************** Testing AES Decryption Integration ****************************************/
+
+		test_case_number = test_case_number + 1;
+
+		// Enqueue all the 4 32-bit Data Packets  
+		enqueue_rx_fifo (32'h67928dd5); // Enqueue 32 Bit Data Packet 1
+		enqueue_rx_fifo (32'h470d4a11); // Enqueue 32 Bit Data Packet 2
+		enqueue_rx_fifo (32'hf0ea4ae7); // Enqueue 32 Bit Data Packet 3
+		enqueue_rx_fifo (32'hd49b2dd4); // Enqueue 32 Bit Data Packet 4
+
+		if(tb_rx_fifo_full == 1'b1)
+		begin
+			$info("Test case #%0d Passed", test_case_number);
+		end
+		else
+		begin
+			$error("Test case #%0d Failed", test_case_number);
+		end
+
+		test_case_number = test_case_number + 1;
+
+		// Dequeue all the 32-bit data packets
+		dequeue_rx_fifo;
+
+		if(tb_rx_data_out == 128'h67928dd5470d4a11f0ea4ae7d49b2dd4)
+		begin
+			$info("Test case #%0d Passed", test_case_number);
+		end
+		else
+		begin
+			$error("Test case #%0d Failed", test_case_number);
+		end
+
+		test_case_number = test_case_number + 1;
+
+		tb_dataPacketIn = tb_rx_data_out; // Using the Data from the RX_FIFO
+		tb_Key = 128'h33DE20E331BA5A525AB7C2495A767B5A;
+
+		// When tb_encrypt_enable = 1'b1 => ENCRYPTION TASK 
+		// And  tb_encrypt_enable = 1'b0 => DECRYPTION TASK
+		tb_encrypt_enable = 1'b0;
+		
+		@(posedge tb_clk); // IDLE
+
+		wait_for_decryption;
+
+		if(tb_dataPacketOut == 128'hE6FEBF30133874EBCB49226CD36D0D4F)
+		begin
+			$info("Decryption: Test Case #%0d Passed", test_case_number);
+		end
+		else
+		begin
+			$error("Decryption: Test Case #%0d Failed", test_case_number);
+		end
+
+		test_case_number = test_case_number + 1;
+
+		// Enqueue all the 4 32-bit Data Packets  
+		enqueue_rx_fifo (32'hE6FEBF30); // Enqueue 32 Bit Data Packet 1
+		enqueue_rx_fifo (32'h133874EB); // Enqueue 32 Bit Data Packet 2
+		enqueue_rx_fifo (32'hCB49226C); // Enqueue 32 Bit Data Packet 3
+		enqueue_rx_fifo (32'hD36D0D4F); // Enqueue 32 Bit Data Packet 4
+
+		if(tb_rx_fifo_full == 1'b1)
+		begin
+			$info("Test case #%0d Passed", test_case_number);
+		end
+		else
+		begin
+			$error("Test case #%0d Failed", test_case_number);
+		end
+
+		test_case_number = test_case_number + 1;
+
+		// Dequeue all the 32-bit data packets
+		dequeue_rx_fifo;
+
+		if(tb_rx_data_out == 128'hE6FEBF30133874EBCB49226CD36D0D4F)
+		begin
+			$info("Test case #%0d Passed", test_case_number);
+		end
+		else
+		begin
+			$error("Test case #%0d Failed", test_case_number);
+		end
+
+		test_case_number = test_case_number + 1;
+
+		tb_dataPacketIn = tb_rx_data_out; // Using the Data from the RX_FIFO
+		tb_Key = 128'h33DE20E331BA5A525AB7C2495A767B5A;
+
+		// When tb_encrypt_enable = 1'b1 => ENCRYPTION TASK 
+		// And  tb_encrypt_enable = 1'b0 => DECRYPTION TASK
+		tb_encrypt_enable = 1'b1;
+		
+		@(posedge tb_clk); // IDLE
+
+		wait_for_encryption;
+
+		if(tb_dataPacketOut == 128'h67928dd5470d4a11f0ea4ae7d49b2dd4)
+		begin
+			$info("Encryption: Test Case #%0d Passed", test_case_number);
+		end
+		else
+		begin
+			$error("Encryption: Test Case #%0d Failed", test_case_number);
 		end
 	end
 

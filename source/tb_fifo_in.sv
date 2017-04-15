@@ -39,6 +39,7 @@ tb_write_en = 0;
 tb_data_in = 0;
 tb_test_case = 1;
 tb_n_rst = 1'b0;
+
 @(posedge tb_clk);
 #3
 tb_n_rst = 1'b1;

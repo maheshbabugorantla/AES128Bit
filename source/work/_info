@@ -102,7 +102,7 @@ r1
 R4
 vfifo_in
 R1
-!s110 1491970848
+!s110 1491983593
 !i10b 1
 !s100 PBY`2FemE>DT]S4N37AE63
 IVFSh6iX1HX97M]XQN>WNK1
@@ -118,9 +118,9 @@ R3
 r1
 !s85 0
 31
-!s108 1491970848.595381
+!s108 1491983593.054813
 !s107 fifo_in.sv|
-!s90 -reportprogress|300|fifo_in.sv|
+!s90 fifo_in.sv|
 !i113 0
 R4
 vg_func_key_expansion

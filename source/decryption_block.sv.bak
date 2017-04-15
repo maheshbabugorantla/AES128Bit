@@ -87,7 +87,7 @@ module decryption_block
 				.n_rst(n_rst),
 				.clear(clear),
 				.count_enable(count_enable),
-				.rollover_val(4'b1100),
+				.rollover_val(4'b1101),
 				.count_out(count),
 				.rollover_flag(rollover_flag)
 			);
