@@ -8,3 +8,73 @@
 # //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
+ls
+# afifo_in.sv
+# decryption_block.sv
+# decryption_controller.sv
+# encryption_block.sv
+# encryption_controller.sv
+# fifo_in.sv
+# fifo_out.sv
+# fifo_out.sv.bak
+# flex_counter.sv
+# GField_02.sv
+# GField_03.sv
+# gf_mul2.sv
+# gf_mul3.sv
+# gf_mul9.sv
+# gf_mulB.sv
+# gf_mulD.sv
+# gf_mulE.sv
+# g_func_key_expansion.sv
+# inverse_mix_columns.sv
+# inv_sbox_unit.sv
+# inv_shiftRows.sv
+# inv_subBytes.sv
+# KeyAddition_dec.sv
+# KeyAddition.sv
+# KeyAddition.sv~
+# keygen.sv
+# KeySchedule.sv
+# mix_columns.sv
+# mixColumns.sv
+# roundKey.sv
+# s_box.sv
+# SBox.sv
+# sbox_unit.sv
+# shiftRows.sv
+# tb_decryption_block.sv
+# tb_decryption_controller.sv
+# tb_encryption_block.sv
+# tb_Encryption_Block.sv
+# tb_encryption_controller.sv
+# tb_fifo_in.sv
+# tb_fifo_out.sv
+# tb_g_func_key_expansion.sv
+# tb_inverse_mix_columns.sv
+# tb_inv_shiftRows.sv
+# tb_inv_subBytes.sv
+# tb_KeySchedule.sv
+# tb_mix_columns.sv
+# tb_mixColumns.sv
+# tb_roundKey.sv
+# tb_SBox.sv
+# tb_shiftRows.sv
+# tb_top_level_block.sv
+# tb_top_level_block.sv.bak
+# tb_top_level_noc.sv
+# top_level_block.sv
+# top_level_controller.sv
+# top_level_noc.sv
+# transcript
+# work
+vlog tb_top_level_block.sv
+# QuestaSim-64 vlog 10.3b Compiler 2014.05 May 29 2014
+# Start time: 18:17:18 on Apr 24,2017
+# vlog -reportprogress 300 tb_top_level_block.sv 
+# -- Compiling module tb_top_level_block
+# 
+# Top level modules:
+# 	tb_top_level_block
+# End time: 18:17:18 on Apr 24,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

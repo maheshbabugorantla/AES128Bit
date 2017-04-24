@@ -43,13 +43,13 @@ module tb_top_level_block();
 	reg tb_rx_fifo_empty;
 	reg tb_rx_fifo_full;
 
-/*	// TX_FIFO DUT Signals
+	// TX_FIFO DUT Signals
 	reg tb_tx_read_en;
 	reg tb_tx_write_en;
-	reg [31:0] tb_tx_data_in;
-	reg [127:0] tb_tx_data_out;
+	reg [127:0] tb_tx_data_in;
+	reg [31:0] tb_tx_data_out;
 	reg tb_tx_fifo_empty;
-	reg tb_tx_fifo_full; */
+	reg tb_tx_fifo_full;
 
 	// RX_FIFO DUT
 	fifo_in RX_FIFO
@@ -65,7 +65,7 @@ module tb_top_level_block();
 	);
 
 	// TX_FIFO DUT	
-/*	fifo_in TX_FIFO
+	fifo_out TX_FIFO
 	(
 		.clk(tb_clk),
 		.n_rst(tb_n_rst),
@@ -75,7 +75,7 @@ module tb_top_level_block();
 		.data_out(tb_tx_data_out),
 		.fifo_empty(tb_tx_fifo_empty),
 		.fifo_full(tb_tx_fifo_full)
-	); */
+	);
 
 	top_level_block TOP_LEVEL_BLK
 	(
@@ -185,6 +185,8 @@ module tb_top_level_block();
 		@(negedge tb_clk); // Wait for the Decrypted Output to Stabilize
 	endtask
 
+	/******************************* RX FIFO ***********************************/
+
 	// Enqueue 32-bit data FIFO into the RX FIFO
 	task enqueue_rx_fifo;
 		input [31:0] data_in;
@@ -198,12 +200,6 @@ module tb_top_level_block();
 			#3;
 		end
 	endtask
-
-	/*
-	task do_thing (input wire[2:0] a, output ...);
-		
-	endtask
-	*/
 
 	// Dequeue all the 128-bit data from the RX_FIFO
 	task dequeue_rx_fifo;
@@ -222,6 +218,42 @@ module tb_top_level_block();
 		tb_rx_data_in = 32'h00000000;
 	endtask
 
+	/******************************* TX FIFO ***********************************/
+
+	// Enqueue four 32-bit data packets FIFO into the TX FIFO
+	task enqueue_tx_fifo;
+		input [127:0] data_in;
+		begin
+			tb_tx_data_in = data_in;
+			tb_tx_write_en = 1'b1;
+			@(posedge tb_clk);
+			#3;
+			tb_tx_write_en = 1'b0;
+			@(posedge tb_clk);
+			#3;
+		end
+	endtask
+
+	// Dequeue a 32-bit data packet from the TX_FIFO
+	task dequeue_tx_fifo;
+		tb_tx_write_en = 1'b0;
+		@(posedge tb_clk);
+		#3;
+		tb_tx_read_en = 1'b1;
+		@(posedge tb_clk);
+		#3;
+		tb_tx_read_en = 1'b0;
+	endtask
+
+	// Reset for the TX_FIFO Block 
+	task reset_tx_fifo;
+		tb_tx_read_en = 0;
+		tb_tx_write_en = 0;
+		tb_tx_data_in = 128'h0000000000000000;
+	endtask
+
+	/******************************* RESET ENCRYPTION AND DECRYPTION BLOCKS ***********************************/
+
 	task reset_encryption_decryption_block;
 		tb_encrypt_enable = 1'b1;
 		@(posedge tb_clk);
@@ -229,10 +261,13 @@ module tb_top_level_block();
 		@(posedge tb_clk);
 	endtask
 
+	/******************************* INITIAL BLOCK ***********************************/
+
 	initial
 	begin
 
 		reset_rx_fifo; // Resetting the RX FIFO
+		reset_tx_fifo; // Resetting the TX FIFO
 		reset_encryption_decryption_block; // Resetting both the Encryption and Decryption Blocks
 		reset_dut; // Resetting the Top Level Block
 
@@ -404,6 +439,60 @@ module tb_top_level_block();
 		else
 		begin
 			$error("Decryption: Test Case #%0d FAILED", test_case_number);
+		end
+
+		test_case_number = test_case_number + 1;
+
+		// Send the data out to the TX FIFO
+		enqueue_tx_fifo(tb_dataPacketOut);
+
+		// Get the 32 bit datapackets from the TX FIFO
+		dequeue_tx_fifo;
+
+		// 1st data packet
+		if(tb_tx_data_out == 32'h7D8AE0F7)
+		begin
+			$info("TX FIFO DEQUEUE: Test Case #%0d PASSED", test_case_number);
+		end
+		else
+		begin
+			$info("TX FIFO DEQUEUE: Test Case #%0d FAILED", test_case_number);
+		end
+
+		dequeue_tx_fifo;
+
+		// 2nd data packet
+		if(tb_tx_data_out == 32'hCFA0A6CB)
+		begin
+			$info("TX FIFO DEQUEUE: Test Case #%0d PASSED", test_case_number);
+		end
+		else
+		begin
+			$info("TX FIFO DEQUEUE: Test Case #%0d FAILED", test_case_number);
+		end
+
+		dequeue_tx_fifo;
+
+		// 3rd data packet
+		if(tb_tx_data_out == 32'h09FB5D05)
+		begin
+			$info("TX FIFO DEQUEUE: Test Case #%0d PASSED", test_case_number);
+		end
+		else
+		begin
+			$info("TX FIFO DEQUEUE: Test Case #%0d FAILED", test_case_number);
+		end
+
+		dequeue_tx_fifo;
+
+		// 4th data packet
+		if(tb_tx_data_out == 32'hA8EC586D)
+		begin
+			$info("TX FIFO DEQUEUE: Test Case #%0d PASSED", test_case_number);
+		end
+		else
+		begin
+			$info("TX FIFO DEQUEUE: Test Case #%0d FAILED", test_case_number);
 		end
 
 		// LoopBack Test No. 2

@@ -82,6 +82,8 @@ module fifo_out
       				next_data_out = data[127:96];
 		end
 	end
+      	
+
   end
   
 	assign next_full = (next_w_pointer != 0);
