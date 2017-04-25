@@ -19,7 +19,7 @@ include /home/ecegrid/a/ece337/Course_Prod/course_make_vars
 
 ### Component Files for the FIFO Block
 
-COMPONENT_FILES	:= gf_mul2.sv gf_mul3.sv sbox_unit.sv shiftRows.sv SBox.sv mix_columns.sv encryption_controller.sv flex_counter.sv KeySchedule.sv KeyAddition.sv g_func_key_expansion.sv roundKey.sv encryption_block.sv gf_mul9.sv gf_mulB.sv gf_mulD.sv gf_mulE.sv inv_sbox_unit.sv inv_shiftRows.sv inv_subBytes.sv inverse_mix_columns.sv decryption_controller.sv KeyAddition_dec.sv decryption_block.sv 
+COMPONENT_FILES	:= gf_mul2.sv gf_mul3.sv sbox_unit.sv shiftRows.sv SBox.sv mix_columns.sv encryption_controller.sv flex_counter.sv KeySchedule.sv KeyAddition.sv g_func_key_expansion.sv roundKey.sv encryption_block.sv gf_mul9.sv gf_mulB.sv gf_mulD.sv gf_mulE.sv inv_sbox_unit.sv inv_shiftRows.sv inv_subBytes.sv inverse_mix_columns.sv  decryption_controller.sv KeyAddition_dec.sv decryption_block.sv fifo_in.sv
 
 # Specify the name of the top level file (do not include the source folder in the name)
 # NOTE: YOU WILL NEED TO SET THIS VARIABLE'S VALUE WHEN WORKING WITH HEIRARCHICAL DESIGNS
@@ -35,7 +35,7 @@ TEST_BENCH	:= tb_$(TOP_LEVEL_FILE)
 
 # Fill in the names of any test bench helper code files (code files referenced by your testbenches
 # other than the actual design files)( do not include the 'source/')
-TB_HELPER_FILES	:= fifo_in.sv, fifo_out.sv
+TB_HELPER_FILES	:= 
 
 # Get the top level design and test_bench module names
 TB_MODULE		:= $(notdir $(basename $(TEST_BENCH)))
