@@ -13,7 +13,8 @@ module decryption_block
 	input wire decryptEnable,
 	input wire [127:0] key,
 	input wire [127:0] inputData,
-	output reg [127:0] outputData
+	output reg [127:0] outputData,
+	output wire decryptionDone
 );
 
 	// Intermediate Input Data Buffer
@@ -161,5 +162,7 @@ module decryption_block
 
 		tempOutputData3 = (done == 1) ? InvByteSubData : outputData;
 	end
+
+	assign decryptionDone = done;
 
 endmodule 

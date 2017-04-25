@@ -26,6 +26,7 @@ module fifo_out
 
   always_ff @ (posedge clk, negedge n_rst)
   begin
+
     if(n_rst == 0)
     begin
 	fifo_empty = 1;
@@ -35,6 +36,7 @@ module fifo_out
       	data_out = '0;
       	fifo_full = '0;
     end
+
     else
     begin
 	 data = next_data;

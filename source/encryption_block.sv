@@ -11,7 +11,8 @@ module encryption_block (
 	input wire encryptEnable,
 	input wire [127:0] key,
 	input wire [127:0] inputData,
-	output reg [127:0] outputData
+	output reg [127:0] outputData,
+	output wire encryptionDone
 );
 
 	// Additional XOR Block
@@ -154,5 +155,7 @@ module encryption_block (
 
 		tempOutputData3 = (done == 1) ? tempOutputData1 : outputData;
 	end
+
+	assign encryptionDone = done;
 
 endmodule 

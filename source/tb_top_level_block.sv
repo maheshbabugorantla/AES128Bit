@@ -32,8 +32,8 @@ module tb_top_level_block();
 	reg [127:0] tb_dataPacketIn;
 	reg [127:0] tb_Key;
 	reg [127:0] tb_dataPacketOut;
-//	reg tb_encrypt_done; 	
-//	reg tb_decrypt_done;
+	reg tb_encryptionDone; 	
+	reg tb_decryptionDone;
 
 	// RX FIFO DUT Signals
 	reg tb_rx_read_en;
@@ -84,12 +84,10 @@ module tb_top_level_block();
 		.encrypt_enable(tb_encrypt_enable),
 		.dataPacketIn(tb_dataPacketIn),
 		.Key(tb_Key),
-		.dataPacketOut(tb_dataPacketOut)
+		.dataPacketOut(tb_dataPacketOut),
+		.encryptionDone(tb_encryptionDone),
+		.decryptionDone(tb_decryptionDone)
 	);
-
-//		.encrypt_done(tb_encrypt_done),
-//		.decrypt_done(tb_decrypt_done)
-//	);
 
 	task reset_dut;
 		// Resetting the Top Level Block
